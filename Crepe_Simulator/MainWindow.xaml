@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:local="clr-namespace:Crepe_Simulator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="650">
+        Title="MainWindow" Height="400" Width="600">
 
     <Window.Resources>
         <Style x:Key="RoundedButton" TargetType="Button">
@@ -28,30 +28,30 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Background(1).png" Stretch="Uniform"/>
+            <ImageBrush Stretch="Uniform" ImageSource="/blury-backgournd.png"/>
         </Grid.Background>
 
         <Button Content="JOUER"
                 Style="{StaticResource RoundedButton}"
                 HorizontalAlignment="Center"
                 Height="75"
-                Margin="0,75,0,0"
+                Margin="0,104,0,0"
                 VerticalAlignment="Top"
                 Width="203"
                 Click="Button_Click"
                 Background="#FFEAA53F"
-                FontSize="22" />
+                FontSize="22" FontFamily="Alef" />
 
         <Button Content="PARAMETRE"
                 Style="{StaticResource RoundedButton}"
                 HorizontalAlignment="Center"
                 Height="75"
-                Margin="0,212,0,0"
+                Margin="0,241,0,0"
                 VerticalAlignment="Top"
                 Width="203"
                 Click="Button_Click"
                 Background="#FFEAA53F"
-                FontSize="22" />
+                FontSize="22" FontFamily="Alef" />
     </Grid>
 
 </Window>

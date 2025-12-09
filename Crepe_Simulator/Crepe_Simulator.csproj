@@ -10,6 +10,8 @@
 
   <ItemGroup>
     <None Remove="Background%281%29.png" />
+    <None Remove="blury-backgournd.png" />
+    <None Remove="blury-background.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +20,8 @@
 
   <ItemGroup>
     <Resource Include="Background(1).png" />
+    <Resource Include="blury-backgournd.png" />
+    <Resource Include="blury-background.png" />
   </ItemGroup>
 
 </Project>
