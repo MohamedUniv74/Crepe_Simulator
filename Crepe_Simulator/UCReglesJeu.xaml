@@ -5,8 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Crepe_Simulator"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="1080" d:DesignWidth="1920">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/blury-backgournd.png"/>
+        </Grid.Background>
+        <Label Content="Régles du jeu" HorizontalAlignment="Left" Margin="620,180,0,0" VerticalAlignment="Top" FontSize="100"/>
+        <Rectangle HorizontalAlignment="Center" Height="412" Margin="0,424,0,0" Stroke="Black" VerticalAlignment="Top" Width="896" Fill="White"/>
 
     </Grid>
 </UserControl>
