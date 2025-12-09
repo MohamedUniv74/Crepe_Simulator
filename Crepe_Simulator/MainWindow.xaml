@@ -28,14 +28,14 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush Stretch="Uniform" ImageSource="/blury-backgournd.png"/>
+            <ImageBrush Stretch="UniformToFill" ImageSource="/blury-backgournd.png"/>
         </Grid.Background>
 
         <Button Content="JOUER"
                 Style="{StaticResource RoundedButton}"
                 HorizontalAlignment="Center"
                 Height="140"
-                Margin="0,296,0,0"
+                Margin="0,372,0,0"
                 VerticalAlignment="Top"
                 Width="462"
     
@@ -46,7 +46,7 @@
                 Style="{StaticResource RoundedButton}"
                 HorizontalAlignment="Center"
                 Height="140"
-                Margin="0,552,0,0"
+                Margin="0,628,0,0"
                 VerticalAlignment="Top"
                 Width="462"
               
