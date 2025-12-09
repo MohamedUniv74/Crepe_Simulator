@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:local="clr-namespace:Crepe_Simulator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="800">
+        Title="MainWindow" Height="400" Width="650">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Background(1).png" Stretch="Uniform"/>
+        </Grid.Background>
+        <Button Content="JOUER" HorizontalAlignment="Left" Height="75" Margin="300,102,0,0" VerticalAlignment="Top" Width="203" Click="Button_Click" Background="#FFEAA53F" FontSize="22"/>
+        <Button Content="PARAMETRE" HorizontalAlignment="Left" Height="75" Margin="300,212,0,0" VerticalAlignment="Top" Width="203" Click="Button_Click" Background="#FFEAA53F" FontSize="22"/>
 
     </Grid>
 </Window>
