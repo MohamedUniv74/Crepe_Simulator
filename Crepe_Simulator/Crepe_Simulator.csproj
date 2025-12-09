@@ -21,7 +21,6 @@
   <ItemGroup>
     <Resource Include="Background(1).png" />
     <Resource Include="blury-backgournd.png" />
-    <Resource Include="blury-background.png" />
   </ItemGroup>
 
 </Project>

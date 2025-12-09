@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:local="clr-namespace:Crepe_Simulator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="600">
+        Title="MainWindow" Height="1080" Width="1920">
 
     <Window.Resources>
         <Style x:Key="RoundedButton" TargetType="Button">
@@ -34,24 +34,33 @@
         <Button Content="JOUER"
                 Style="{StaticResource RoundedButton}"
                 HorizontalAlignment="Center"
-                Height="75"
-                Margin="0,104,0,0"
+                Height="140"
+                Margin="0,296,0,0"
                 VerticalAlignment="Top"
-                Width="203"
-                Click="Button_Click"
+                Width="462"
+    
                 Background="#FFEAA53F"
-                FontSize="22" FontFamily="Alef" />
+                FontSize="48" FontFamily="Alef" />
 
         <Button Content="PARAMETRE"
                 Style="{StaticResource RoundedButton}"
                 HorizontalAlignment="Center"
-                Height="75"
-                Margin="0,241,0,0"
+                Height="140"
+                Margin="0,552,0,0"
                 VerticalAlignment="Top"
-                Width="203"
-                Click="Button_Click"
+                Width="462"
+              
                 Background="#FFEAA53F"
-                FontSize="22" FontFamily="Alef" />
+                FontSize="48" FontFamily="Alef" RenderTransformOrigin="0.5,0.5" >
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="3.622"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-1.948"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
     </Grid>
 
 </Window>
