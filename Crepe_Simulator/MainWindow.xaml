@@ -6,12 +6,52 @@
         xmlns:local="clr-namespace:Crepe_Simulator"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="650">
+
+    <Window.Resources>
+        <Style x:Key="RoundedButton" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="20"
+                                Padding="10">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Background(1).png" Stretch="Uniform"/>
         </Grid.Background>
-        <Button Content="JOUER" HorizontalAlignment="Left" Height="75" Margin="300,102,0,0" VerticalAlignment="Top" Width="203" Click="Button_Click" Background="#FFEAA53F" FontSize="22"/>
-        <Button Content="PARAMETRE" HorizontalAlignment="Left" Height="75" Margin="300,212,0,0" VerticalAlignment="Top" Width="203" Click="Button_Click" Background="#FFEAA53F" FontSize="22"/>
 
+        <Button Content="JOUER"
+                Style="{StaticResource RoundedButton}"
+                HorizontalAlignment="Center"
+                Height="75"
+                Margin="0,75,0,0"
+                VerticalAlignment="Top"
+                Width="203"
+                Click="Button_Click"
+                Background="#FFEAA53F"
+                FontSize="22" />
+
+        <Button Content="PARAMETRE"
+                Style="{StaticResource RoundedButton}"
+                HorizontalAlignment="Center"
+                Height="75"
+                Margin="0,212,0,0"
+                VerticalAlignment="Top"
+                Width="203"
+                Click="Button_Click"
+                Background="#FFEAA53F"
+                FontSize="22" />
     </Grid>
+
 </Window>
