@@ -8,7 +8,7 @@
              d:DesignHeight="1080" d:DesignWidth="1920">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/blury-background.png"/>
+            <ImageBrush ImageSource="/images/blury-background.png"/>
         </Grid.Background>
         <Rectangle HorizontalAlignment="Center" Height="910" Stroke="Black" VerticalAlignment="Center" Width="1408" Fill="White" Opacity="0.7"/>
         <Label Content="Règles du jeu" HorizontalAlignment="Center" Height="189" Margin="0,138,0,0" VerticalAlignment="Top" Width="628" FontSize="100"/>
