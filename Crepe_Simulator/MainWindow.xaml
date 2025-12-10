@@ -32,6 +32,7 @@
         </Grid.Background>
 
         <Button Content="JOUER"
+                Click="PlayButton_Click"
                 Style="{StaticResource RoundedButton}"
                 HorizontalAlignment="Center"
                 Height="140"
