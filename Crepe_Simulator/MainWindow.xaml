@@ -28,7 +28,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush Stretch="UniformToFill" ImageSource="/blury-backgournd.png"/>
+            <ImageBrush Stretch="UniformToFill" ImageSource="/blury-background.png"/>
         </Grid.Background>
 
         <Button Content="JOUER"

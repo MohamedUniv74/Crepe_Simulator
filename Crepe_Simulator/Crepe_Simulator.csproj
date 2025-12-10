@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="images\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Background(1).png" />
     <Resource Include="blury-backgournd.png" />
   </ItemGroup>
