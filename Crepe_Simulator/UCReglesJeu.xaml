@@ -11,7 +11,7 @@
             <ImageBrush ImageSource="/blury-backgournd.png"/>
         </Grid.Background>
         <Rectangle HorizontalAlignment="Center" Height="910" Stroke="Black" VerticalAlignment="Center" Width="1408" Fill="White" Opacity="0.7"/>
-        <Label Content="Regles du jeu" HorizontalAlignment="Center" Height="189" Margin="0,138,0,0" VerticalAlignment="Top" Width="628" FontSize="100"/>
+        <Label Content="Règles du jeu" HorizontalAlignment="Center" Height="189" Margin="0,138,0,0" VerticalAlignment="Top" Width="628" FontSize="100"/>
         <Ellipse HorizontalAlignment="Left" Height="46" Margin="465,313,0,0" Stroke="Black" VerticalAlignment="Top" Width="45" Fill="#FFC18140"/>
         <Ellipse HorizontalAlignment="Left" Height="46" Margin="465,418,0,0" Stroke="Black" VerticalAlignment="Top" Width="45" Fill="#FFC18140"/>
         <Ellipse HorizontalAlignment="Left" Height="46" Margin="465,540,0,0" Stroke="Black" VerticalAlignment="Top" Width="45" Fill="#FFC18140"/>
@@ -20,7 +20,7 @@
         <Ellipse HorizontalAlignment="Left" Height="46" Margin="465,868,0,0" Stroke="Black" VerticalAlignment="Top" Width="45" Fill="#FFC18140"/>
         <Label Content="Choisissez une crêpe" FontSize="48" Margin="646,296,755,704"/>
         <Label Content="Préparez la crêpe" FontSize="48" Margin="646,418,755,582"/>
-        <Label Content="Gérez la cuisson pour ne que la crêpe ne crame pas" FontSize="48" Margin="646,506,38,494"/>
+        <Label Content="Gérez la cuisson pour que la crêpe ne crame pas" FontSize="48" Margin="646,506,158,494"/>
         <Label Content="Gagnez des points dans votre score et &#xA;empochez de l’argent" FontSize="48" Margin="646,605,0,395"/>
         <Label Content="Ajoutez les garnitures" FontSize="48" Margin="646,737,755,263"/>
         <Label Content="Servez les clients à temps" FontSize="48" Margin="646,851,332,149"/>
