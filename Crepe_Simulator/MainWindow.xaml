@@ -5,63 +5,65 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:local="clr-namespace:Crepe_Simulator"
         mc:Ignorable="d"
-        Title="Accueil" Height="1080" Width="1920">
-
-    <Window.Resources>
-        <Style x:Key="RoundedButton" TargetType="Button">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="20"
-                                Padding="10">
-                            <ContentPresenter HorizontalAlignment="Center"
-                                              VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
+        Title="Accueil" Height="450" Width="800">
 
     <Grid>
         <Grid.Background>
             <ImageBrush Stretch="UniformToFill" ImageSource="/blury-backgournd.png" />
         </Grid.Background>
-
-        <Button Content="JOUER"
-                Click="PlayButton_Click"
-                Style="{StaticResource RoundedButton}"
-                HorizontalAlignment="Center"
-                Height="140"
-                Margin="0,372,0,0"
-                VerticalAlignment="Top"
-                Width="462"
-    
-                Background="#FFEAA53F"
-                FontSize="48" FontFamily="Alef" />
-
-        <Button Content="PARAMETRE"
-                Style="{StaticResource RoundedButton}"
-                HorizontalAlignment="Center"
-                Height="140"
-                Margin="0,628,0,0"
-                VerticalAlignment="Top"
-                Width="462"
-              
-                Background="#FFEAA53F"
-                FontSize="48" FontFamily="Alef" RenderTransformOrigin="0.5,0.5" >
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleX="3.622"/>
-                    <RotateTransform/>
-                    <TranslateTransform X="-1.948"/>
-                </TransformGroup>
-            </Button.RenderTransform>
+        <Button Content="JOUER" HorizontalAlignment="Center" Margin="0,181,0,0" VerticalAlignment="Top" Height="60" Width="200" FontSize="16" FontWeight="Bold" Background="#FFFFB105">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+BorderBrush="Black"
+BorderThickness="3"
+CornerRadius="20">
+                        <ContentPresenter HorizontalAlignment="Center"
+              VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
         </Button>
+        <Button Content="QUITTER" HorizontalAlignment="Left" Margin="710,10,0,0" VerticalAlignment="Top" Height="30" Width="80" FontWeight="Bold" Background="#FFFF3939">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+        BorderBrush="Black"
+        BorderThickness="3"
+        CornerRadius="8">
+                        <ContentPresenter HorizontalAlignment="Center"
+                      VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Content="PARAMÈTRES" HorizontalAlignment="Center" Margin="0,336,0,0" VerticalAlignment="Top" Width="200" Height="60" FontSize="16" FontWeight="Bold" Background="#FFFFB105">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                        BorderBrush="Black"
+                        BorderThickness="3"
+                        CornerRadius="20">
+                        <ContentPresenter HorizontalAlignment="Center"
+                      VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Content="RÈGLES DU JEU" HorizontalAlignment="Center" Margin="0,260,0,0" VerticalAlignment="Top" Width="200" Height="60" FontSize="16" FontWeight="Bold" Background="#FFFFB105">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                    BorderBrush="Black"
+                    BorderThickness="3"
+                    CornerRadius="20">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Label Content="Creperie Simulator" HorizontalAlignment="Center" Margin="0,82,0,0" VerticalAlignment="Top" Height="56" Width="368" FontSize="40" Foreground="Black" FontWeight="Bold"/>
     </Grid>
 
 </Window>
