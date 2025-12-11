@@ -9,8 +9,8 @@
     <Grid>
         <!-- <Grid.Background>
             <ImageBrush ImageSource="/images/jeu.png"/>
-        </Grid.Background>-->
-        <Image Margin="186,295,540,85" Source="/images/Chevremiel.png" Stretch="Fill"/>
+        </Grid.Background>
+        <Image Margin="193,290,533,90" Source="/images/Chevremiel.png" Stretch="Fill"/>
         <Image Margin="116,269,628,115" Source="/images/caramel.png" Stretch="Fill"/>
         <Image Margin="34,340,713,43" Source="/images/jelly.png" Stretch="Fill"/>
         <Image Margin="34,267,711,120" Source="/images/nutella.png" Stretch="Fill"/>
@@ -22,6 +22,8 @@
         <Ellipse HorizontalAlignment="Left" Height="36" Margin="498,290,0,0" VerticalAlignment="Top" Width="38" Stroke="#FF777777" Fill="Black"/>
         <Ellipse HorizontalAlignment="Left" Height="36" Margin="424,340,0,0" VerticalAlignment="Top" Width="37" Stroke="#FF777777" Fill="Black"/>
         <Ellipse HorizontalAlignment="Left" Height="36" Margin="499,340,0,0" VerticalAlignment="Top" Width="37" Stroke="#FF777777" Fill="Black"/>
+        <Image Margin="566,287,141,67" Source="/images/Assiette.png" Stretch="Fill"/>
+        <Image Margin="102,39,563,249" Source="/images/clients/client1.png" Stretch="Fill"/>
 
     </Grid>
 </UserControl>
