@@ -35,5 +35,9 @@ namespace Crepe_Simulator
         //    UCJeu ucJeu = new UCJeu(); 
         //    ZoneJeu.Content = ucJeu; 
         //}
+        private void butRegles(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
