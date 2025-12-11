@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace Crepe_Simulator
 {
     /// <summary>
-    /// Logique d'interaction pour UCParametre.xaml
+    /// Logique d'interaction pour UCJeu.xaml
     /// </summary>
-    public partial class UCParametre : UserControl
+    public partial class UCJeu : UserControl
     {
-        public UCParametre()
+        public UCJeu()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
