@@ -17,13 +17,11 @@
         <Ellipse HorizontalAlignment="Left" Height="46" Margin="465,540,0,0" Stroke="Black" VerticalAlignment="Top" Width="45" Fill="#FFC18140"/>
         <Ellipse HorizontalAlignment="Left" Height="46" Margin="465,639,0,0" Stroke="Black" VerticalAlignment="Top" Width="45" Fill="#FFC18140"/>
         <Ellipse HorizontalAlignment="Left" Height="46" Margin="465,754,0,0" Stroke="Black" VerticalAlignment="Top" Width="45" Fill="#FFC18140"/>
-        <Ellipse HorizontalAlignment="Left" Height="46" Margin="465,868,0,0" Stroke="Black" VerticalAlignment="Top" Width="45" Fill="#FFC18140"/>
-        <Label Content="Choisissez une crêpe" FontSize="48" Margin="646,296,755,704"/>
-        <Label Content="Préparez la crêpe" FontSize="48" Margin="646,418,755,582"/>
-        <Label Content="Gérez la cuisson pour que la crêpe ne crame pas" FontSize="48" Margin="646,506,158,494"/>
-        <Label Content="Gagnez des points dans votre score et &#xA;empochez de l’argent" FontSize="48" Margin="646,605,0,395"/>
-        <Label Content="Ajoutez les garnitures" FontSize="48" Margin="646,737,755,263"/>
-        <Label Content="Servez les clients à temps" FontSize="48" Margin="646,851,332,149"/>
+        <Label Content="Préparez la crêpe" FontSize="48" Margin="646,296,755,704"/>
+        <Label Content="Gérez la cuisson pour que la crêpe ne crame pas" FontSize="48" Margin="646,401,158,599"/>
+        <Label Content="Gagnez des points dans votre score et &#xA;empochez de l’argent" FontSize="48" Margin="646,523,0,477"/>
+        <Label Content="Ajoutez les garnitures" FontSize="48" Margin="646,608,755,392"/>
+        <Label Content="Servez les clients à temps" FontSize="48" Margin="646,720,332,280"/>
 
 
     </Grid>

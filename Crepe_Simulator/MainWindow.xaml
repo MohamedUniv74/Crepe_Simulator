@@ -50,7 +50,7 @@ CornerRadius="20">
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Content="RÈGLES DU JEU" HorizontalAlignment="Center" Margin="0,260,0,0" VerticalAlignment="Top" Width="200" Height="60" FontSize="16" FontWeight="Bold" Background="#FFFFB105">
+        <Button Content="RÈGLES DU JEU" HorizontalAlignment="Center" Margin="0,260,0,0" VerticalAlignment="Top" Width="200" Height="60" FontSize="16" FontWeight="Bold" Background="#FFFFB105" Click="butRegles">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}"
