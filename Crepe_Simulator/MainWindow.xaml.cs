@@ -19,10 +19,21 @@ namespace Crepe_Simulator
         public MainWindow()
         {
             InitializeComponent();
+            //AfficheDemarrage(); // Afficher l'écran d'accueil au démarrage
+
         }
 
-   
+        //private void AfficheDemarrage()
+        //{
+        //    UCDemarrage uc = new UCDemarrage();
+        //    ZoneJeu.Content = uc;
+        //    uc.butDemarrer.Click += AfficherJeu; 
+        //}
 
-
-   }
+        //private void AfficherJeu(object sender, RoutedEventArgs e)
+        //{
+        //    UCJeu ucJeu = new UCJeu(); 
+        //    ZoneJeu.Content = ucJeu; 
+        //}
+    }
 }

@@ -7,9 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid.Background>
+        <!-- <Grid.Background>
             <ImageBrush ImageSource="/images/jeu.png"/>
-        </Grid.Background>
+        </Grid.Background>-->
         <Image Margin="186,295,540,85" Source="/images/Chevremiel.png" Stretch="Fill"/>
         <Image Margin="116,269,628,115" Source="/images/caramel.png" Stretch="Fill"/>
         <Image Margin="34,340,713,43" Source="/images/jelly.png" Stretch="Fill"/>
