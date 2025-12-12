@@ -14,7 +14,7 @@
         <Viewbox Stretch="Uniform">
             <Canvas Width="800" Height="450">
 
-                <!-- TIMER - Style néon bleu -->
+                <!-- TIMER  -->
                 <Border Canvas.Left="10" Canvas.Top="10" 
                         Background="#AA2C3E50" 
                         BorderBrush="#FF3498DB" 
@@ -41,7 +41,7 @@
                     </StackPanel>
                 </Border>
 
-                <!-- ARGENT - Style doré -->
+                <!-- ARGENT  -->
                 <Border Canvas.Left="10" Canvas.Top="32" 
                         Background="#AA2C3E50" 
                         BorderBrush="#FFFFB105" 
