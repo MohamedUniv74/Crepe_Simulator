@@ -30,7 +30,7 @@
         </Button>
 
         <!-- Bouton 3 -->
-        <Button Content="Temps: 5min" FontWeight="Bold" Background="PeachPuff" Width="410" Height="88" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,581,0,0" FontSize="36">
+        <Button Content="Temps: 5min" FontWeight="Bold" Background="PeachPuff" Width="410" Height="88" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,581,0,0" FontSize="36" Click="Button_Click">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">

@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="Crepe_Simulator.UCTemps"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Crepe_Simulator"
+             mc:Ignorable="d" 
+             d:DesignHeight="1080" d:DesignWidth="1920">
+    <Grid RenderTransformOrigin="0.481,0.508">
+        <Rectangle HorizontalAlignment="Center" Height="318" Stroke="Black" VerticalAlignment="Center" Width="584" Fill="#FFECD8AE" Opacity="0.7" RadiusX="30.75" RadiusY="30.75"/>
+        <Label Content="Temps de jeu" HorizontalAlignment="Center" Margin="0,426,0,0" VerticalAlignment="Top" FontSize="36"/>
+        <ComboBox x:Name="MaListe" Margin="869,552,869,509">
+            <ComboBoxItem> 1 mn </ComboBoxItem>
+            <ComboBoxItem> 2 mns </ComboBoxItem>
+            <ComboBoxItem> 3 mns </ComboBoxItem>
+        </ComboBox>
+
+    </Grid>
+</UserControl>
