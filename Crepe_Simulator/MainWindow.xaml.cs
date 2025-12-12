@@ -26,8 +26,8 @@ namespace Crepe_Simulator
 
         private void AfficheDemarrage()
         {
-            UCDemarrage uc = new UCDemarrage();  // crée et charge l'écran de démarrage
-            ZoneJeu.Content = uc;  // associe l'écran au conteneur  
+            UCDemarrage uc = new UCDemarrage();  
+            ZoneJeu.Content = uc;  
             uc.bouton_jouer.Click +=  AfficherJeu;
             uc.bouton_reglesjeu.Click += AfficherRegles;
             uc.bouton_parametre.Click += AfficherParametres;
@@ -55,7 +55,8 @@ namespace Crepe_Simulator
 
 
 
-       
+
+
 
 
 

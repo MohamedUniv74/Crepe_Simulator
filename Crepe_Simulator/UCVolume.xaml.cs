@@ -10,18 +10,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Crepe_Simulator
 {
     /// <summary>
-    /// Logique d'interaction pour volume.xaml
+    /// Logique d'interaction pour UCVolume.xaml
     /// </summary>
-    public partial class volume : Window
+    public partial class UCVolume : UserControl
     {
-        public volume()
+        public UCVolume()
         {
             InitializeComponent();
         }
+
+        
     }
 }

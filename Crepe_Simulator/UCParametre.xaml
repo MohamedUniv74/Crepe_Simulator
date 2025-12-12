@@ -9,7 +9,7 @@
     <Grid>
 
         <!-- Bouton 1 -->
-        <Button Content="Volume 100%" FontWeight="Bold" Background="peachpuff" Width="410" Height="88" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,480,0,0" FontSize="36">
+        <Button x:Name="Bouton_volume" Content="Volume" FontWeight="Bold" Background="peachpuff" Width="410" Height="88" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,480,0,0" FontSize="36" Click="Bouton_volume_Click">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
