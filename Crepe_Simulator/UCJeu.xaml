@@ -71,6 +71,9 @@
                 <!-- Assiette -->
                 <Image Canvas.Left="566" Canvas.Top="287" Width="93" Height="96" 
                        Source="/images/Assiette.png" Stretch="Fill"/>
+                <Label Content="Timer:" Height="27" Canvas.Left="10" Canvas.Top="10" Width="79"/>
+                <Label Content="Argent:" Height="27" Canvas.Left="10" Canvas.Top="40
+" Width="79"/>
             </Canvas>
         </Viewbox>
     </Grid>
