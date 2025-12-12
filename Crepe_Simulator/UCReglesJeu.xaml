@@ -3,34 +3,89 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Crepe_Simulator"
-             mc:Ignorable="d" 
-             Height="1080" Width="1920">
-    <Grid Width="1920" Height="1080" HorizontalAlignment="Left" VerticalAlignment="Top">
-        <Rectangle HorizontalAlignment="Center" Height="1080" Stroke="Black" VerticalAlignment="Center" Width="1920" Fill="White" Opacity="0.7"/>
-        <Label Content="Règles du jeu" HorizontalAlignment="Center" Height="172" Margin="0,121,0,0" VerticalAlignment="Top" Width="668" FontSize="100"/>
-        <Ellipse HorizontalAlignment="Left" Height="41" Margin="362,392,0,0" Stroke="Black" VerticalAlignment="Top" Width="41" Fill="#FFC18140"/>
-        <Ellipse HorizontalAlignment="Left" Height="42" Margin="362,487,0,0" Stroke="Black" VerticalAlignment="Top" Width="41" Fill="#FFC18140"/>
-        <Ellipse HorizontalAlignment="Left" Height="42" Margin="362,598,0,0" Stroke="Black" VerticalAlignment="Top" Width="41" Fill="#FFC18140"/>
-        <Ellipse HorizontalAlignment="Left" Height="42" Margin="362,689,0,0" Stroke="Black" VerticalAlignment="Top" Width="41" Fill="#FFC18140"/>
-        <Ellipse HorizontalAlignment="Left" Height="42" Margin="362,794,0,0" Stroke="Black" VerticalAlignment="Top" Width="41" Fill="#FFC18140"/>
-        <Label Content="Préparez la crêpe" FontSize="48" Margin="528,382,916,626" Foreground="Black"/>
-        <Label Content="Gérez la cuisson pour que la crêpe ne crame pas" FontSize="48" Margin="528,487,223,520"/>
-        <Label Content="Gagnez des points dans votre score et &#xA;empochez de l’argent" FontSize="48" Margin="528,583,223,424"/>
-        <Label Content="Ajoutez les garnitures" FontSize="48" Margin="528,673,916,334"/>
-        <Label Content="Servez les clients à temps" FontSize="48" Margin="528,778,528,229"/>
-        <Button x:Name="bouton_retour_regles" Content="RETOUR" HorizontalAlignment="Left" Margin="1674,44,0,0"
-            VerticalAlignment="Top" Height="69" Width="191"
-            FontWeight="Bold" Background="#FFFF3939" Click="but_retour_regles" FontSize="22">
-            <Button.Template>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Background="{TemplateBinding Background}"
-                        BorderBrush="Black" BorderThickness="3"
-                        CornerRadius="8">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Border>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
-    </Grid>
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <!-- Permet de scaler le contenu comme UCJeu -->
+    <Viewbox Stretch="Uniform">
+        <Grid Width="800" Height="450">
+
+            <!-- Fond blanc semi-transparent -->
+            <Rectangle Fill="White" Opacity="0.75"/>
+
+            <!-- Titre -->
+            <TextBlock Text="Règles du jeu"
+                       FontSize="48" FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"
+                       Margin="0,20,0,0"/>
+
+            <StackPanel Orientation="Vertical"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="60,100,0,0">
+
+                <StackPanel Orientation="Horizontal" Margin="0,10">
+                    <Ellipse Width="20" Height="20" Fill="#FFC18140" Stroke="Black"/>
+                    <TextBlock Text="   Préparez la crêpe"
+                               FontSize="24"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,10">
+                    <Ellipse Width="20" Height="20" Fill="#FFC18140" Stroke="Black"/>
+                    <TextBlock Text="   Gérez la cuisson pour ne pas la cramer"
+                               FontSize="24"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,10">
+                    <Ellipse Width="20" Height="20" Fill="#FFC18140" Stroke="Black"/>
+                    <TextBlock Text="   Gagnez des points et empochez de l’argent"
+                               FontSize="24" TextWrapping="Wrap"
+                               Width="600"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,10">
+                    <Ellipse Width="20" Height="20" Fill="#FFC18140" Stroke="Black"/>
+                    <TextBlock Text="   Ajoutez les garnitures"
+                               FontSize="24"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,10">
+                    <Ellipse Width="20" Height="20" Fill="#FFC18140" Stroke="Black"/>
+                    <TextBlock Text="   Servez les clients à temps"
+                               FontSize="24"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+
+            </StackPanel>
+
+            <!-- Bouton retour -->
+            <Button x:Name="bouton_retour_regles"
+                    Content="RETOUR"
+                    Width="120" Height="45"
+                    Background="#FFFF3939"
+                    FontSize="20" FontWeight="Bold"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Margin="0,15,15,0"
+                    Click="but_retour_regles">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="Black" BorderThickness="2"
+                                CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+        </Grid>
+    </Viewbox>
+
 </UserControl>
