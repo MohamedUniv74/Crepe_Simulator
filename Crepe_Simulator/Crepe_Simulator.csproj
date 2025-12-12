@@ -12,12 +12,51 @@
     <None Remove="Background%281%29.png" />
     <None Remove="blury-backgournd.png" />
     <None Remove="blury-background.png" />
+    <None Remove="images\Adobe Express - file.png" />
+    <None Remove="images\Assiette.png" />
     <None Remove="images\Background%281%29.png" />
+    <None Remove="images\blury-background.png" />
+    <None Remove="images\caramel.png" />
+    <None Remove="images\Chevremiel.png" />
+    <None Remove="images\clients\client2.png" />
+    <None Remove="images\clients\client3.png" />
+    <None Remove="images\clients\client4.png" />
+    <None Remove="images\clients\client5.png" />
+    <None Remove="images\clients\client6.png" />
+    <None Remove="images\crepe_icon.png" />
+    <None Remove="images\crepe_realiste.png" />
+    <None Remove="images\jelly.png" />
+    <None Remove="images\jeu.png" />
+    <None Remove="images\nutella.png" />
+    <None Remove="images\pink_background.png" />
+    <None Remove="images\poele.png" />
+    <None Remove="images\poubelle.png" />
+    <None Remove="images\sucre.png" />
+    <None Remove="UCDemarrage.xaml.cs~RF2d05f217.TMP" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="images\Adobe Express - file.png" />
+    <Resource Include="images\Assiette.png" />
     <Resource Include="images\blury-backgournd.png" />
     <Resource Include="images\Background(1).png" />
+    <Resource Include="images\blury-background.png" />
+    <Resource Include="images\caramel.png" />
+    <Resource Include="images\Chevremiel.png" />
+    <Resource Include="images\clients\client2.png" />
+    <Resource Include="images\clients\client3.png" />
+    <Resource Include="images\clients\client4.png" />
+    <Resource Include="images\clients\client5.png" />
+    <Resource Include="images\clients\client6.png" />
+    <Resource Include="images\crepe_icon.png" />
+    <Resource Include="images\crepe_realiste.png" />
+    <Resource Include="images\jelly.png" />
+    <Resource Include="images\jeu.png" />
+    <Resource Include="images\nutella.png" />
+    <Resource Include="images\pink_background.png" />
+    <Resource Include="images\poele.png" />
+    <Resource Include="images\poubelle.png" />
+    <Resource Include="images\sucre.png" />
   </ItemGroup>
 
 </Project>
