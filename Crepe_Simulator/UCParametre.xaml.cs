@@ -29,5 +29,10 @@ namespace Crepe_Simulator
         {
             (Application.Current.MainWindow as MainWindow).ZoneJeu.Content = new UCDemarrage();
         }
+
+        private void Bouton_volume_Click(object sender, RoutedEventArgs e)
+        {
+            (Application.Current.MainWindow as MainWindow).ZoneJeu.Content = new UCVolume();
+        }
     }
 }
