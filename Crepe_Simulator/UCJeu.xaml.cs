@@ -67,8 +67,8 @@ namespace Crepe_Simulator
 
         private void bouton_preparer_Click(object sender, RoutedEventArgs e)
         {
-            double nouvellePositionX = 475;
-            double nouvellePositionY = 272;
+            double nouvellePositionX = 395;
+            double nouvellePositionY = 285;
 
             double dx = 5;
             double dy = 3;
