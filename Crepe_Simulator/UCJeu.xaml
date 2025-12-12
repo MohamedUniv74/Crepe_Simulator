@@ -14,12 +14,72 @@
         <Viewbox Stretch="Uniform">
             <Canvas Width="800" Height="450">
 
-                <Button x:Name="bouton_quitter" Content="QUITTER" HorizontalAlignment="Left" Height="27" Width="76" FontWeight="Bold" Background="#FFFF3939" Click="butQuitter" Canvas.Top="10" Canvas.Left="714" VerticalAlignment="Center">
+                <!-- TIMER - Style néon bleu -->
+                <Border Canvas.Left="10" Canvas.Top="10" 
+                        Background="#AA2C3E50" 
+                        BorderBrush="#FF3498DB" 
+                        BorderThickness="1.5" 
+                        CornerRadius="8"
+                        Padding="6,2">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#FF3498DB" BlurRadius="8" ShadowDepth="0" Opacity="0.6"/>
+                    </Border.Effect>
+                    <StackPanel Orientation="Horizontal">
+                        <!-- Icône horloge -->
+                        <Viewbox Width="12" Height="12" Margin="0,0,5,0">
+                            <Canvas Width="24" Height="24">
+                                <Ellipse Width="24" Height="24" Stroke="#FF3498DB" StrokeThickness="2.5" Fill="Transparent"/>
+                                <Line X1="12" Y1="12" X2="12" Y2="6" Stroke="#FF3498DB" StrokeThickness="2.5"/>
+                                <Line X1="12" Y1="12" X2="16" Y2="12" Stroke="#FF3498DB" StrokeThickness="2"/>
+                            </Canvas>
+                        </Viewbox>
+                        <TextBlock x:Name="label_timer" Text="00:00" 
+                                   Foreground="#FF3498DB" 
+                                   FontSize="11" 
+                                   FontWeight="Bold"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- ARGENT - Style doré -->
+                <Border Canvas.Left="10" Canvas.Top="32" 
+                        Background="#AA2C3E50" 
+                        BorderBrush="#FFFFB105" 
+                        BorderThickness="1.5" 
+                        CornerRadius="8"
+                        Padding="6,2">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#FFFFB105" BlurRadius="8" ShadowDepth="0" Opacity="0.6"/>
+                    </Border.Effect>
+                    <StackPanel Orientation="Horizontal">
+                        <!-- Icône pièce -->
+                        <Viewbox Width="12" Height="12" Margin="0,0,5,0">
+                            <Canvas Width="24" Height="24">
+                                <Ellipse Width="24" Height="24" Stroke="#FFFFB105" StrokeThickness="2.5" Fill="#FFFFD700"/>
+                                <TextBlock Text="€" FontSize="16" FontWeight="Bold" 
+                                           Foreground="#FF2C3E50" Canvas.Left="7" Canvas.Top="2"/>
+                            </Canvas>
+                        </Viewbox>
+                        <TextBlock x:Name="label_argent" Text="0€" 
+                                   Foreground="#FFFFB105" 
+                                   FontSize="11" 
+                                   FontWeight="Bold"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Bouton QUITTER -->
+                <Button x:Name="bouton_quitter" Content="QUITTER" 
+                        Canvas.Left="714" Canvas.Top="10"
+                        Height="27" Width="76" 
+                        FontWeight="Bold" 
+                        Background="#FFFF3939" 
+                        Click="butQuitter">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}"
-                BorderBrush="Black" BorderThickness="3"
-                CornerRadius="8">
+                                    BorderBrush="Black" BorderThickness="3"
+                                    CornerRadius="8">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>
@@ -71,9 +131,7 @@
                 <!-- Assiette -->
                 <Image Canvas.Left="566" Canvas.Top="287" Width="93" Height="96" 
                        Source="/images/Assiette.png" Stretch="Fill"/>
-                <Label Content="Timer:" Height="27" Canvas.Left="10" Canvas.Top="10" Width="79"/>
-                <Label Content="Argent:" Height="27" Canvas.Left="10" Canvas.Top="40
-" Width="79"/>
+
             </Canvas>
         </Viewbox>
     </Grid>
