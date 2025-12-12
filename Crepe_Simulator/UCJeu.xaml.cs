@@ -29,5 +29,19 @@ namespace Crepe_Simulator
         {
             Application.Current.Shutdown();
         }
+
+        private void bouton_preparer_Click(object sender, RoutedEventArgs e)
+        {
+            double nouvellePositionX = 475;
+            double nouvellePositionY = 272;
+
+            double dx = 5;
+            double dy = 3;
+
+            Canvas.SetLeft(imgPoele, nouvellePositionX + dx);
+            Canvas.SetTop(imgPoele, nouvellePositionY + dy);
+
+            PoeleRotation.Angle = 90;
+        }
     }
 }
