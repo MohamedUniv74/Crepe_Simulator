@@ -25,6 +25,9 @@ namespace Crepe_Simulator
             InitializeComponent();
         }
 
-      
+        private void bouton_annuler_Click(object sender, RoutedEventArgs e)
+        {
+            (Application.Current.MainWindow as MainWindow).ZoneJeu.Content = new UCParametre();
+        }
     }
 }

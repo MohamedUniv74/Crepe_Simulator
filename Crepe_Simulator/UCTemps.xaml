@@ -7,12 +7,18 @@
              mc:Ignorable="d" 
              d:DesignHeight="1080" d:DesignWidth="1920">
     <Grid RenderTransformOrigin="0.481,0.508">
+
         <Rectangle HorizontalAlignment="Center" Height="318" Stroke="Black" VerticalAlignment="Center" Width="584" Fill="#FFECD8AE" Opacity="0.7" RadiusX="30.75" RadiusY="30.75"/>
         <Label Content="Temps de jeu" HorizontalAlignment="Center" Margin="0,426,0,0" VerticalAlignment="Top" FontSize="36"/>
-        <ComboBox x:Name="MaListe" Margin="869,552,869,509">
-            <ComboBoxItem> 1 mn </ComboBoxItem>
-            <ComboBoxItem> 2 mns </ComboBoxItem>
-            <ComboBoxItem> 3 mns </ComboBoxItem>
+        <Button x:Name="bouton_annuler" Content="Annuler" HorizontalAlignment="Left" Margin="1058,626,0,0" VerticalAlignment="Top" Width="64" Height="28" Click="bouton_annuler_Click"/>
+        <ComboBox x:Name="MaListe"
+          Width="200"
+          Height="25"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Center">
+            <ComboBoxItem Content="1 mn"/>
+            <ComboBoxItem Content="2 mns"/>
+            <ComboBoxItem Content="3 mns"/>
         </ComboBox>
 
     </Grid>
