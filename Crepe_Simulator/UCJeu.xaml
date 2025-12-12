@@ -100,19 +100,22 @@
 
                 <!-- Nutella -->
                 <Image Canvas.Left="34" Canvas.Top="267" Width="55" Height="63" 
-                       Source="/images/nutella.png" Stretch="Fill"/>
+                       Source="/images/nutella.png" Stretch="Fill" AllowDrop="True"/>
 
                 <!-- Sucre -->
                 <Image Canvas.Left="116" Canvas.Top="340" Width="55" Height="73" 
                        Source="/images/sucre.png" Stretch="Fill"/>
 
-                <!-- Poêle -->
-                <Image Canvas.Left="312" Canvas.Top="276" Width="68" Height="120" 
-                       Source="/images/poele.png" Stretch="Fill"/>
-
                 <!-- Poubelle -->
                 <Image Canvas.Left="673" Canvas.Top="250" Width="117" Height="140" 
                        Source="/images/poubelle.png" Stretch="Fill"/>
+
+                <!-- Poêle -->
+                <Image x:Name="imgPoele" Canvas.Left="312" Canvas.Top="276" Width="68" Height="120" Source="/images/poele.png" Stretch="Fill" Panel.ZIndex="1">
+                    <Image.RenderTransform>
+                        <RotateTransform x:Name="PoeleRotation" Angle="0" CenterX="50" CenterY="25"/>
+                    </Image.RenderTransform>
+                </Image>
 
                 <!-- Plaque de cuisson -->
                 <Rectangle Canvas.Left="400" Canvas.Top="280" Height="110" Width="161" 
@@ -131,6 +134,17 @@
                 <!-- Assiette -->
                 <Image Canvas.Left="566" Canvas.Top="287" Width="93" Height="96" 
                        Source="/images/Assiette.png" Stretch="Fill"/>
+
+                <!-- Buton Préparation-->
+                <Button x:Name="bouton_preparer" Content="Préparer" FontWeight="Bold" Background="#FFFFBB27" Canvas.Left="430" Canvas.Top="393" Height="20" Width="102" HorizontalAlignment="Center" VerticalAlignment="Center" Click="bouton_preparer_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1" CornerRadius="3">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
 
             </Canvas>
         </Viewbox>
