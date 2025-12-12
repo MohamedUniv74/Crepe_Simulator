@@ -25,6 +25,7 @@
                         <DropShadowEffect Color="#FF3498DB" BlurRadius="8" ShadowDepth="0" Opacity="0.6"/>
                     </Border.Effect>
                     <StackPanel Orientation="Horizontal">
+
                         <!-- Icône horloge -->
                         <Viewbox Width="12" Height="12" Margin="0,0,5,0">
                             <Canvas Width="24" Height="24">
@@ -52,6 +53,7 @@
                         <DropShadowEffect Color="#FFFFB105" BlurRadius="8" ShadowDepth="0" Opacity="0.6"/>
                     </Border.Effect>
                     <StackPanel Orientation="Horizontal">
+
                         <!-- Icône pièce -->
                         <Viewbox Width="12" Height="12" Margin="0,0,5,0">
                             <Canvas Width="24" Height="24">
@@ -130,6 +132,10 @@
                         Stroke="#FF777777" Fill="Black"/>
                 <Ellipse Canvas.Left="499" Canvas.Top="340" Height="36" Width="37" 
                         Stroke="#FF777777" Fill="Black"/>
+
+                <!-- Crepe -->
+                <Image x:Name="imgCrepe" Canvas.Left="417" Canvas.Top="282" Width="49" Height="48" 
+                        Source="/images/crepe_realiste.png" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Center" Panel.ZIndex="1" Visibility="Hidden"/>
 
                 <!-- Assiette -->
                 <Image Canvas.Left="566" Canvas.Top="287" Width="93" Height="96" 

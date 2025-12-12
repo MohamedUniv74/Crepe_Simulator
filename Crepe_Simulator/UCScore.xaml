@@ -7,17 +7,40 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <!-- Image de fond -->
         <Image Source="/images/blury-background.png" Stretch="Fill"/>
-        <Button Content="Rejouer" FontWeight="Bold" Background="peachpuff" Width="150" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="309,253,0,0">
-            <Button.Template>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Border>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
-        <Label Content="SCORE : 000" HorizontalAlignment="Left" Height="119" Margin="234,92,0,0" VerticalAlignment="Top" Width="508" FontSize="48"/>
 
+        <!-- Viewbox pour maintenir les proportions -->
+        <Viewbox Stretch="Uniform">
+            <Canvas Width="800" Height="450">
+
+                <!-- Label Score centré -->
+                <Label Content="SCORE : 000" 
+                       Canvas.Left="146" Canvas.Top="90"
+                       Width="508" Height="119" 
+                       FontSize="48" FontWeight="Bold"
+                       HorizontalContentAlignment="Center"
+                       VerticalContentAlignment="Center"/>
+
+                <!-- Bouton Rejouer centré -->
+                <Button x:Name="bouton_rejouer" Content="Rejouer" 
+                        Canvas.Left="325" Canvas.Top="250"
+                        Width="150" Height="35" 
+                        FontWeight="Bold" 
+                        Background="peachpuff">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" 
+                                    BorderBrush="Black" 
+                                    BorderThickness="2" 
+                                    CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+            </Canvas>
+        </Viewbox>
     </Grid>
 </UserControl>

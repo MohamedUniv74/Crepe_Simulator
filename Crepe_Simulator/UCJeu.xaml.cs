@@ -77,6 +77,8 @@ namespace Crepe_Simulator
             Canvas.SetTop(imgPoele, nouvellePositionY + dy);
 
             PoeleRotation.Angle = 90;
+
+            imgCrepe.Visibility = Visibility.Visible;
         }
     }
 }
