@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
+using System.Media;
 
 namespace Crepe_Simulator
 {
@@ -12,11 +13,18 @@ namespace Crepe_Simulator
     {
         private DispatcherTimer timer;
         private TimeSpan tempsRestant;
+        DispatcherTimer timerPreparation;
+        int tempsRestantPreparation = 15;
+
 
         public UCJeu()
         {
             InitializeComponent();
             InitialiserTimer();
+
+            timerPreparation = new DispatcherTimer();
+            timerPreparation.Interval = TimeSpan.FromSeconds(1);
+            timerPreparation.Tick += Timer_Preparation;
         }
 
         private void InitialiserTimer()
@@ -65,20 +73,52 @@ namespace Crepe_Simulator
             Application.Current.Shutdown();
         }
 
+
+        //Bouton préparation
+
         private void bouton_preparer_Click(object sender, RoutedEventArgs e)
         {
             double nouvellePositionX = 395;
-            double nouvellePositionY = 285;
+            double nouvellePositionY = 292;
 
-            double dx = 5;
-            double dy = 3;
-
-            Canvas.SetLeft(imgPoele, nouvellePositionX + dx);
-            Canvas.SetTop(imgPoele, nouvellePositionY + dy);
+            Canvas.SetLeft(imgPoele, nouvellePositionX);
+            Canvas.SetTop(imgPoele, nouvellePositionY);
 
             PoeleRotation.Angle = 90;
 
             imgCrepe.Visibility = Visibility.Visible;
+
+            tempsRestantPreparation = 15;
+            txtTimer.Text = $"Temps de préparation : {tempsRestantPreparation}s";
+            timerPreparation.Start();
+
         }
+
+        //Timer préparation
+
+        private void Timer_Preparation(object sender, EventArgs e)
+        {
+            tempsRestantPreparation--;
+            txtTimer.Text = $"Temps de préparation : {tempsRestantPreparation}s";
+
+            if (tempsRestantPreparation <= 0)
+            {
+                timerPreparation.Stop();
+
+                //Deplacement de la crepe sur l'assiette
+                Canvas.SetLeft(imgCrepe, 578);
+                Canvas.SetTop(imgCrepe, 298);
+                imgCrepe.Width = 70;
+                imgCrepe.Height = 70;
+
+                //Retour position initial de la poele
+                Canvas.SetLeft(imgPoele, 312);
+                Canvas.SetTop(imgPoele, 276);
+                PoeleRotation.Angle = 0;
+
+                txtTimer.Text = "";
+            }
+        }
+
     }
 }
