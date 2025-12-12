@@ -20,7 +20,7 @@ namespace Crepe_Simulator
         {
             InitializeComponent();
             AfficheDemarrage();
-            AfficheParametre();
+            
 
         }
 
@@ -55,19 +55,7 @@ namespace Crepe_Simulator
 
 
 
-        private void AfficheParametre()
-        {
-            UCParametre uc = new UCParametre();
-            ZoneJeu.Content = uc;
-            uc.bouton_retour_parametre.Click +=  AfficherDemarrage;
-
-        }
-
-        private void AfficherDemarrage(object sender, RoutedEventArgs e)
-        {
-            UCDemarrage uc = new UCDemarrage();
-            ZoneJeu.Content = uc;
-        }
+       
 
 
 
