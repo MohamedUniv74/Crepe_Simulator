@@ -19,5 +19,18 @@
         <Label Content="Gagnez des points dans votre score et &#xA;empochez de l’argent" FontSize="48" Margin="528,583,223,424"/>
         <Label Content="Ajoutez les garnitures" FontSize="48" Margin="528,673,916,334"/>
         <Label Content="Servez les clients à temps" FontSize="48" Margin="528,778,528,229"/>
+        <Button x:Name="bouton_retour_regles" Content="RETOUR" HorizontalAlignment="Left" Margin="1674,44,0,0"
+            VerticalAlignment="Top" Height="69" Width="191"
+            FontWeight="Bold" Background="#FFFF3939" Click="but_retour_regles" FontSize="22">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}"
+                        BorderBrush="Black" BorderThickness="3"
+                        CornerRadius="8">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </Grid>
 </UserControl>

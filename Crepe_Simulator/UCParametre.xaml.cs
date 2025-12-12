@@ -25,6 +25,9 @@ namespace Crepe_Simulator
             InitializeComponent();
         }
 
-        
+        private void but_retour_parametre(object sender, RoutedEventArgs e)
+        {
+            (Application.Current.MainWindow as MainWindow).ZoneJeu.Content = new UCDemarrage();
+        }
     }
 }
