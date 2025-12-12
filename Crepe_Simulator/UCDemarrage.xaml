@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:local="clr-namespace:Crepe_Simulator"
              mc:Ignorable="d"
-             Height="450" Width="800">
+             Height="1080" Width="1920">
 
     <Grid>
 
@@ -13,8 +13,8 @@
 
         <!-- BOUTONS DU MENU -->
         <Button x:Name="bouton_jouer" Content="JOUER" 
-                HorizontalAlignment="Center" Margin="0,154,0,0" VerticalAlignment="Top"
-                Height="60" Width="200" FontSize="16" FontWeight="Bold"
+                HorizontalAlignment="Left" Margin="727,464,0,0" VerticalAlignment="Top"
+                Height="125" Width="512" FontSize="48" FontWeight="Bold"
                 Background="#FFFFB105" Click="butJouer">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
@@ -27,9 +27,9 @@
             </Button.Template>
         </Button>
 
-        <Button Content="QUITTER" HorizontalAlignment="Left" Margin="693,20,0,0"
-                VerticalAlignment="Top" Height="30" Width="80"
-                FontWeight="Bold" Background="#FFFF3939" Click="butQuitter">
+        <Button x:Name="bouton_quitter" Content="QUITTER" HorizontalAlignment="Left" Margin="1674,44,0,0"
+                VerticalAlignment="Top" Height="69" Width="191"
+                FontWeight="Bold" Background="#FFFF3939" Click="butQuitter" FontSize="22">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}"
@@ -41,9 +41,9 @@
             </Button.Template>
         </Button>
 
-        <Button x:Name="bouton_parametre" Content="PARAMÈTRES" HorizontalAlignment="Center"
-                Margin="0,309,0,0" VerticalAlignment="Top"
-                Width="200" Height="60" FontSize="16" FontWeight="Bold"
+        <Button x:Name="bouton_parametre" Content="PARAMÈTRES" HorizontalAlignment="Left"
+                Margin="727,785,0,0" VerticalAlignment="Top"
+                Width="512" Height="124" FontSize="48" FontWeight="Bold"
                 Background="#FFFFB105" Click="butParam">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
@@ -56,9 +56,9 @@
             </Button.Template>
         </Button>
 
-        <Button x:Name="bouton_reglesjeu" Content="RÈGLES DU JEU" HorizontalAlignment="Center"
-                Margin="0,234,0,0" VerticalAlignment="Top"
-                Width="200" Height="60" FontSize="16" FontWeight="Bold"
+        <Button x:Name="bouton_reglesjeu" Content="RÈGLES DU JEU" HorizontalAlignment="Left"
+                Margin="727,629,0,0" VerticalAlignment="Top"
+                Width="512" Height="125" FontSize="48" FontWeight="Bold"
                 Background="#FFFFB105" Click="butRegles">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
@@ -71,10 +71,19 @@
             </Button.Template>
         </Button>
 
-        <Label Content="Creperie Simulator" HorizontalAlignment="Center"
-               Margin="0,60,0,0" VerticalAlignment="Top"
-               Height="56" Width="368" FontSize="40"
-               Foreground="Black" FontWeight="Bold"/>
+        <Label Content="Creperie Simulator" HorizontalAlignment="Left"
+               Margin="514,154,0,0" VerticalAlignment="Top"
+               Height="146" Width="931" FontSize="100"
+               Foreground="Black" FontWeight="Bold" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-0.559"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.343"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
 
     </Grid>
 </UserControl>

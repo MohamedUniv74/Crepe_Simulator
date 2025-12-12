@@ -19,7 +19,7 @@
             </Button.Template>
         </Button>
 
-        <Button Content="Retour" FontWeight="Bold" Background="Red" Width="150" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="308,352,0,0" Click="Button_Click">
+        <Button x:Name="bouton_retour_parametre" Content="Retour" FontWeight="Bold" Background="Red" Width="150" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="308,352,0,0" Click="Button_Click">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
