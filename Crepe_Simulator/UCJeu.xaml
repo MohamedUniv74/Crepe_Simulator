@@ -7,22 +7,58 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-       
+        <!-- Image de fond -->
         <Image Source="/images/jeu.png" Stretch="Fill"/>
-        <Image Margin="193,290,533,90" Source="/images/Chevremiel.png" Stretch="Fill"/>
-        <Image Margin="116,269,628,115" Source="/images/caramel.png" Stretch="Fill"/>
-        <Image Margin="34,340,713,43" Source="/images/jelly.png" Stretch="Fill"/>
-        <Image Margin="34,267,711,120" Source="/images/nutella.png" Stretch="Fill"/>
-        <Image Margin="116,340,629,37" Source="/images/sucre.png" Stretch="Fill"/>
-        <Image Margin="312,276,420,54" Source="/images/poele.png" Stretch="Fill"/>
-        <Image Margin="673,250,10,60" Source="/images/poubelle.png" Stretch="Fill"/>
-        <Rectangle HorizontalAlignment="Left" Height="110" Margin="400,280,0,0" Stroke="Black" VerticalAlignment="Top" Width="161" Fill="#FF252525" RadiusX="16" RadiusY="16"/>
-        <Ellipse HorizontalAlignment="Left" Height="36" Margin="424,290,0,0" VerticalAlignment="Top" Width="36" Stroke="#FF777777" Fill="Black"/>
-        <Ellipse HorizontalAlignment="Left" Height="36" Margin="498,290,0,0" VerticalAlignment="Top" Width="38" Stroke="#FF777777" Fill="Black"/>
-        <Ellipse HorizontalAlignment="Left" Height="36" Margin="424,340,0,0" VerticalAlignment="Top" Width="37" Stroke="#FF777777" Fill="Black"/>
-        <Ellipse HorizontalAlignment="Left" Height="36" Margin="499,340,0,0" VerticalAlignment="Top" Width="37" Stroke="#FF777777" Fill="Black"/>
-        <Image Margin="566,287,141,67" Source="/images/Assiette.png" Stretch="Fill"/>
-        
 
+        <!-- Viewbox pour maintenir les proportions -->
+        <Viewbox Stretch="Uniform">
+            <Canvas Width="800" Height="450">
+                <!-- Chevremiel -->
+                <Image Canvas.Left="193" Canvas.Top="290" Width="74" Height="70" 
+                       Source="/images/Chevremiel.png" Stretch="Fill"/>
+
+                <!-- Caramel -->
+                <Image Canvas.Left="116" Canvas.Top="269" Width="56" Height="66" 
+                       Source="/images/caramel.png" Stretch="Fill"/>
+
+                <!-- Jelly -->
+                <Image Canvas.Left="34" Canvas.Top="340" Width="53" Height="67" 
+                       Source="/images/jelly.png" Stretch="Fill"/>
+
+                <!-- Nutella -->
+                <Image Canvas.Left="34" Canvas.Top="267" Width="55" Height="63" 
+                       Source="/images/nutella.png" Stretch="Fill"/>
+
+                <!-- Sucre -->
+                <Image Canvas.Left="116" Canvas.Top="340" Width="55" Height="73" 
+                       Source="/images/sucre.png" Stretch="Fill"/>
+
+                <!-- Poêle -->
+                <Image Canvas.Left="312" Canvas.Top="276" Width="68" Height="120" 
+                       Source="/images/poele.png" Stretch="Fill"/>
+
+                <!-- Poubelle -->
+                <Image Canvas.Left="673" Canvas.Top="250" Width="117" Height="140" 
+                       Source="/images/poubelle.png" Stretch="Fill"/>
+
+                <!-- Plaque de cuisson -->
+                <Rectangle Canvas.Left="400" Canvas.Top="280" Height="110" Width="161" 
+                          Stroke="Black" Fill="#FF252525" RadiusX="16" RadiusY="16"/>
+
+                <!-- Boutons de la plaque -->
+                <Ellipse Canvas.Left="424" Canvas.Top="290" Height="36" Width="36" 
+                        Stroke="#FF777777" Fill="Black"/>
+                <Ellipse Canvas.Left="498" Canvas.Top="290" Height="36" Width="38" 
+                        Stroke="#FF777777" Fill="Black"/>
+                <Ellipse Canvas.Left="424" Canvas.Top="340" Height="36" Width="37" 
+                        Stroke="#FF777777" Fill="Black"/>
+                <Ellipse Canvas.Left="499" Canvas.Top="340" Height="36" Width="37" 
+                        Stroke="#FF777777" Fill="Black"/>
+
+                <!-- Assiette -->
+                <Image Canvas.Left="566" Canvas.Top="287" Width="93" Height="96" 
+                       Source="/images/Assiette.png" Stretch="Fill"/>
+            </Canvas>
+        </Viewbox>
     </Grid>
 </UserControl>
