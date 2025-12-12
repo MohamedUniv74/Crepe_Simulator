@@ -13,6 +13,19 @@
         <!-- Viewbox pour maintenir les proportions -->
         <Viewbox Stretch="Uniform">
             <Canvas Width="800" Height="450">
+
+                <Button x:Name="bouton_quitter" Content="QUITTER" HorizontalAlignment="Left" Height="27" Width="76" FontWeight="Bold" Background="#FFFF3939" Click="butQuitter" Canvas.Top="10" Canvas.Left="714" VerticalAlignment="Center">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                BorderBrush="Black" BorderThickness="3"
+                CornerRadius="8">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
                 <!-- Chevremiel -->
                 <Image Canvas.Left="193" Canvas.Top="290" Width="74" Height="70" 
                        Source="/images/Chevremiel.png" Stretch="Fill"/>
