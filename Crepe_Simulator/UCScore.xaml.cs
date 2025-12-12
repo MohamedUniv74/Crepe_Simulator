@@ -15,14 +15,30 @@ using System.Windows.Shapes;
 
 namespace Crepe_Simulator
 {
-    /// <summary>
-    /// Logique d'interaction pour UCScore.xaml
-    /// </summary>
+  
     public partial class UCScore : UserControl
     {
         public UCScore()
         {
             InitializeComponent();
+
+            // Ajouter l'événement Click au bouton
+            bouton_rejouer.Click += Bouton_rejouer_Click;
+        }
+
+        private void Bouton_rejouer_Click(object sender, RoutedEventArgs e)
+        {
+            // Récupérer la fenêtre principale
+            Window mainWindow = Window.GetWindow(this);
+
+            if (mainWindow != null && mainWindow.Content is Grid grid)
+            {
+                // Vider le contenu actuel
+                grid.Children.Clear();
+
+                // Créer une nouvelle instance de UCJeu (avec un timer qui redémarre)
+                grid.Children.Add(new UCJeu());
+            }
         }
     }
 }
