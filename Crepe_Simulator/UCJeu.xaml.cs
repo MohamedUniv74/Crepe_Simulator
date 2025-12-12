@@ -25,7 +25,9 @@ namespace Crepe_Simulator
             InitializeComponent();
         }
 
-     
-
+        private void butQuitter(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
