@@ -23,6 +23,7 @@ namespace Crepe_Simulator
         public UCParametre()
         {
             InitializeComponent();
+            UpdateFullscreenButtonText();
         }
 
         private void but_retour_parametre(object sender, RoutedEventArgs e)
@@ -38,7 +39,45 @@ namespace Crepe_Simulator
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             (Application.Current.MainWindow as MainWindow).ZoneJeu.Content = new UCTemps();
+        }
 
+        private void Bouton_fullscreen_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
+                if (mainWindow.WindowState == WindowState.Maximized && mainWindow.WindowStyle == WindowStyle.None)
+                {
+                    // Désactiver le fullscreen
+                    mainWindow.WindowState = WindowState.Normal;
+                    mainWindow.WindowStyle = WindowStyle.SingleBorderWindow;
+                    mainWindow.ResizeMode = ResizeMode.CanResize;
+                }
+                else
+                {
+                    // Activer le fullscreen
+                    mainWindow.WindowStyle = WindowStyle.None;
+                    mainWindow.ResizeMode = ResizeMode.NoResize;
+                    mainWindow.WindowState = WindowState.Maximized;
+                }
+                UpdateFullscreenButtonText();
+            }
+        }
+
+        private void UpdateFullscreenButtonText()
+        {
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null && Bouton_fullscreen != null)
+            {
+                if (mainWindow.WindowState == WindowState.Maximized && mainWindow.WindowStyle == WindowStyle.None)
+                {
+                    Bouton_fullscreen.Content = "Mode Fenêtre";
+                }
+                else
+                {
+                    Bouton_fullscreen.Content = "Fullscreen";
+                }
+            }
         }
     }
 }
