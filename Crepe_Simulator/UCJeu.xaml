@@ -115,6 +115,8 @@
                 <!-- Timer Preparation-->
                 <TextBlock x:Name="txtTimer" Text="" FontSize="16" FontWeight="Bold" Canvas.Left="353" Canvas.Top="255" HorizontalAlignment="Left" VerticalAlignment="Center" Width="275"/>
 
+                <!-- Message erreur crepe déja présente-->
+                <Label x:Name="labelMessageErreur" Canvas.Left="346" Canvas.Top="250" Width="275" FontSize="16" FontWeight="Bold" Content="Vous devez déjà vendre la crêpe !" Foreground="#FFC80000" Visibility="Hidden"/>
 
                 <!-- Poêle -->
                 <Image x:Name="imgPoele" Canvas.Left="312" Canvas.Top="276" Width="68" Height="120" Source="/images/poele.png" Stretch="Fill" Panel.ZIndex="1">
@@ -137,8 +139,12 @@
                 <Ellipse Canvas.Left="499" Canvas.Top="340" Height="36" Width="37" 
                         Stroke="#FF777777" Fill="Black"/>
 
-                <!-- Crepe -->
-                <Image x:Name="imgCrepe" Canvas.Left="413" Canvas.Top="279" Width="49" Height="48" 
+                <!-- Crepe 1-->
+                <Image x:Name="imgCrepe1" Canvas.Left="413" Canvas.Top="279" Width="49" Height="48" 
+                        Source="/images/crepe_realiste.png" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Top" Panel.ZIndex="1" Visibility="Hidden"/>
+
+                <!-- Crepe 2-->
+                <Image x:Name="imgCrepe2" Canvas.Left="578" Canvas.Top="298" Width="70" Height="70" 
                         Source="/images/crepe_realiste.png" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Top" Panel.ZIndex="1" Visibility="Hidden"/>
 
                 <!-- Assiette -->
@@ -170,7 +176,7 @@
 
 
                 <Image x:Name="imgClient4" Source="/images/clients/client4.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="500" Canvas.Top="55"/>
-                
+
                 <Image x:Name="imgClient5" Source="/images/clients/client5.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="200" Canvas.Top="55"/>
 
 

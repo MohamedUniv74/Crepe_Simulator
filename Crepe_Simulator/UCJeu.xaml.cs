@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Eventing.Reader;
 using System.Media;
 using System.Numerics;
 using System.Windows;
@@ -17,7 +18,7 @@ namespace Crepe_Simulator
         private DispatcherTimer timer;
         private TimeSpan tempsRestant;
         DispatcherTimer timerPreparation;
-        int tempsRestantPreparation = 15;
+        int tempsRestantPreparation = 10;
 
        
         public UCJeu()
@@ -113,23 +114,33 @@ namespace Crepe_Simulator
 
         //Bouton préparation
 
-        private void bouton_preparer_Click(object sender, RoutedEventArgs e)
+        private async void bouton_preparer_Click(object sender, RoutedEventArgs e)
         {
-            double nouvellePositionX = 395;
-            double nouvellePositionY = 292;
+            if (imgCrepe2.Visibility == Visibility.Hidden)
+            {
+                double nouvellePositionX = 395;
+                double nouvellePositionY = 292;
 
-            Canvas.SetLeft(imgPoele, nouvellePositionX);
-            Canvas.SetTop(imgPoele, nouvellePositionY);
+                Canvas.SetLeft(imgPoele, nouvellePositionX);
+                Canvas.SetTop(imgPoele, nouvellePositionY);
 
-            PoeleRotation.Angle = 90;
+                PoeleRotation.Angle = 90;
 
-            imgCrepe.Visibility = Visibility.Visible;
+                imgCrepe1.Visibility = Visibility.Visible;
 
-            tempsRestantPreparation = 15;
-            txtTimer.Text = $"Temps de préparation : {tempsRestantPreparation}s";
-            timerPreparation.Start();
-
+                tempsRestantPreparation = 10;
+                txtTimer.Text = $"Temps de préparation : {tempsRestantPreparation}s";
+                timerPreparation.Start();
+            }
+            else
+            {
+                labelMessageErreur.Visibility = Visibility.Visible;
+                await Task.Delay(3000);
+                labelMessageErreur.Visibility = Visibility.Hidden;
+            }
+            
         }
+
 
         //Timer préparation
 
@@ -143,10 +154,13 @@ namespace Crepe_Simulator
                 timerPreparation.Stop();
 
                 //Deplacement de la crepe sur l'assiette
-                Canvas.SetLeft(imgCrepe, 578);
-                Canvas.SetTop(imgCrepe, 298);
-                imgCrepe.Width = 70;
-                imgCrepe.Height = 70;
+                //Canvas.SetLeft(imgCrepe1, 578);
+                //Canvas.SetTop(imgCrepe1, 298);
+                //imgCrepe1.Width = 70;
+                //imgCrepe1.Height = 70;
+
+                imgCrepe2.Visibility = Visibility.Visible;
+                imgCrepe1.Visibility = Visibility.Hidden;
 
                 //Retour position initial de la poele
                 Canvas.SetLeft(imgPoele, 312);
@@ -165,7 +179,7 @@ namespace Crepe_Simulator
             if (tempsRestantPreparation <= 0)
             {
                 // changer l’image de la crêpe
-                imgCrepe.Source = new BitmapImage(new Uri("/Images/crepes/crepe_nutella.png", UriKind.Relative));
+                imgCrepe2.Source = new BitmapImage(new Uri("/Images/crepes/crepe_nutella.png", UriKind.Relative));
 
 
             }
@@ -176,7 +190,7 @@ namespace Crepe_Simulator
             if (tempsRestantPreparation <= 0)
             {
                 // changer l’image de la crêpe
-                imgCrepe.Source = new BitmapImage(new Uri("/Images/crepes/crepe_caramele.png", UriKind.Relative));
+                imgCrepe2.Source = new BitmapImage(new Uri("/Images/crepes/crepe_caramele.png", UriKind.Relative));
             }
         }
 
@@ -185,7 +199,7 @@ namespace Crepe_Simulator
             if (tempsRestantPreparation <= 0)
             {
                 // changer l’image de la crêpe
-                imgCrepe.Source = new BitmapImage(new Uri("/Images/crepes/crepe_confitture.png", UriKind.Relative));
+                imgCrepe2.Source = new BitmapImage(new Uri("/Images/crepes/crepe_confitture.png", UriKind.Relative));
             }
         }
 
@@ -194,7 +208,7 @@ namespace Crepe_Simulator
             if (tempsRestantPreparation <= 0)
             {
                 // changer l’image de la crêpe
-                imgCrepe.Source = new BitmapImage(new Uri("/Images/crepes/crepe_chevremiel.png", UriKind.Relative));
+                imgCrepe2.Source = new BitmapImage(new Uri("/Images/crepes/crepe_chevremiel.png", UriKind.Relative));
             }
         }
 
@@ -203,7 +217,7 @@ namespace Crepe_Simulator
             if (tempsRestantPreparation <= 0)
             {
                 // changer l’image de la crêpe
-                imgCrepe.Source = new BitmapImage(new Uri("/Images/crepes/crepe_sucre.png", UriKind.Relative));
+                imgCrepe2.Source = new BitmapImage(new Uri("/Images/crepes/crepe_sucre.png", UriKind.Relative));
             }
 
         }
