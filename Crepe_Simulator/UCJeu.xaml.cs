@@ -153,12 +153,6 @@ namespace Crepe_Simulator
             {
                 timerPreparation.Stop();
 
-                //Deplacement de la crepe sur l'assiette
-                //Canvas.SetLeft(imgCrepe1, 578);
-                //Canvas.SetTop(imgCrepe1, 298);
-                //imgCrepe1.Width = 70;
-                //imgCrepe1.Height = 70;
-
                 imgCrepe2.Visibility = Visibility.Visible;
                 imgCrepe1.Visibility = Visibility.Hidden;
 
