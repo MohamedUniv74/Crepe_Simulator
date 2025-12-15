@@ -21,14 +21,28 @@ namespace Crepe_Simulator
         DispatcherTimer timerPreparation;
         int tempsRestantPreparation = 10;
 
+        // AJOUT : Variable pour le score
+        public static int Score { get; set; } = 0;
+        private const int PRIX_CREPE = 5; // Prix par crêpe vendue
+
         public UCJeu()
         {
             InitializeComponent();
             InitialiserTimer();
 
+            // Initialiser le score à 0 au début du jeu
+            Score = 0;
+            MettreAJourAffichageScore();
+
             timerPreparation = new DispatcherTimer();
             timerPreparation.Interval = TimeSpan.FromSeconds(1);
             timerPreparation.Tick += Timer_Preparation;
+        }
+
+        // AJOUT : Méthode pour mettre à jour l'affichage du score
+        private void MettreAJourAffichageScore()
+        {
+            label_argent.Text = $"{Score}€";
         }
 
         private void InitialiserTimer()
@@ -134,7 +148,7 @@ namespace Crepe_Simulator
             }
         }
 
-        // NOUVELLE MÉTHODE - Bouton Vendre
+        // MODIFIÉ : Bouton Vendre avec augmentation du score
         private async void bouton_vendre_Click(object sender, RoutedEventArgs e)
         {
             if (imgCrepe2.Visibility == Visibility.Visible)
@@ -181,15 +195,19 @@ namespace Crepe_Simulator
                     crêpeTrouvée = true;
                 }
 
-                // Si aucune crêpe ne correspond, afficher le message
-                if (!crêpeTrouvée)
+                // AJOUT : Si une crêpe a été vendue, augmenter le score
+                if (crêpeTrouvée)
                 {
-                    labelMessageErreurVente.Visibility = Visibility.Visible; // Afficher le label
-                    await Task.Delay(3000);
-                    labelMessageErreurVente.Visibility = Visibility.Hidden; // Cacher le label si une crêpe a été trouvée
+                    Score += PRIX_CREPE;
+                    MettreAJourAffichageScore();
                 }
-                
-
+                else
+                {
+                    // Si aucune crêpe ne correspond, afficher le message
+                    labelMessageErreurVente.Visibility = Visibility.Visible;
+                    await Task.Delay(3000);
+                    labelMessageErreurVente.Visibility = Visibility.Hidden;
+                }
             }
         }
 
