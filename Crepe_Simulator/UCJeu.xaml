@@ -269,7 +269,19 @@
                 <Image x:Name="imgClient6" Source="/images/clients/client5.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="200" Canvas.Top="55"/>
                 <Image x:Name="imgcmd5" Source="/images/commandes/cmd_sucre.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="160" Canvas.Top="15"/>
 
-
+                <!-- Bouton Vendre -->
+                <Button x:Name="bouton_vendre" Content="Vendre" FontWeight="Bold" Background="#FF27BB5A" Canvas.Left="566" Canvas.Top="393" Height="20" Width="93" HorizontalAlignment="Center" VerticalAlignment="Center" Click="bouton_vendre_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="2" CornerRadius="5">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="Black" BlurRadius="3" ShadowDepth="2" Opacity="0.5"/>
+                                </Border.Effect>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
             </Canvas>
         </Viewbox>
     </Grid>
