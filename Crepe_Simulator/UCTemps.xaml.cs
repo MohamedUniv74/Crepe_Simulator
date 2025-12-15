@@ -7,7 +7,7 @@ namespace Crepe_Simulator
     public partial class UCTemps : UserControl
     {
         // Variable statique pour stocker le temps
-        public static int TempsChoisi = 1;
+        public static int TempsChoisi = 3;
 
         public UCTemps()
         {

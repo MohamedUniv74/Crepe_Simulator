@@ -61,19 +61,22 @@ namespace Crepe_Simulator
             tempsRestant = tempsRestant.Subtract(TimeSpan.FromSeconds(1));
             label_timer.Text = tempsRestant.ToString(@"mm\:ss");
 
-            if ((int)tempsRestant.TotalSeconds == 50)
+            int tempsTotalSecondes = UCTemps.TempsChoisi * 60; // Conversion en secondes
+
+
+            if ((int)tempsRestant.TotalSeconds == (int)(tempsTotalSecondes * 0.83))
             {
                 imgClient2.Visibility = Visibility.Visible;
                 imgcmd1.Visibility = Visibility.Visible;
             }
 
-            if ((int)tempsRestant.TotalSeconds == 40)
+            if ((int)tempsRestant.TotalSeconds == (int)(tempsTotalSecondes * 0.66))
             {
                 imgClient3.Visibility = Visibility.Visible;
                 imgcmd2.Visibility = Visibility.Visible;
             }
 
-            if ((int)tempsRestant.TotalSeconds == 30)
+            if ((int)tempsRestant.TotalSeconds == (int)(tempsTotalSecondes * 0.50))
             {
                 imgClient4.Visibility = Visibility.Visible;
                 imgcmd3.Visibility = Visibility.Visible;
