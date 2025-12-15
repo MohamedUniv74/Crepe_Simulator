@@ -36,7 +36,7 @@ namespace Crepe_Simulator
             InitialiserTimer();
 
             // Initialiser le score à 50 au début du jeu
-            Score = 50;
+            Score = 0;
             MettreAJourAffichageScore();
             MettreAJourBoutonAmelioration();
 
