@@ -212,7 +212,8 @@ namespace Crepe_Simulator
 
         private async void bouton_preparer_Click(object sender, RoutedEventArgs e)
         {
-            if (imgCrepe2.Visibility == Visibility.Hidden)
+            // MODIFIÉ : On ne peut préparer que si aucune crêpe n'est en train de cuire
+            if (imgCrepe1.Visibility == Visibility.Hidden)
             {
                 double nouvellePositionX = 395;
                 double nouvellePositionY = 292;
@@ -231,6 +232,8 @@ namespace Crepe_Simulator
             }
             else
             {
+                // Une crêpe est déjà en train de cuire
+                labelMessageErreur.Content = "Une crêpe est déjà en cuisson !";
                 labelMessageErreur.Visibility = Visibility.Visible;
                 await Task.Delay(3000);
                 labelMessageErreur.Visibility = Visibility.Hidden;
@@ -246,14 +249,29 @@ namespace Crepe_Simulator
             {
                 timerPreparation.Stop();
 
-                imgCrepe2.Visibility = Visibility.Visible;
-                imgCrepe1.Visibility = Visibility.Hidden;
+                // MODIFIÉ : Vérifier si l'assiette est libre avant de mettre la crêpe
+                if (imgCrepe2.Visibility == Visibility.Hidden)
+                {
+                    // L'assiette est libre, on peut y mettre la crêpe
+                    // Réinitialiser la crêpe à l'image de base
+                    imgCrepe2.Source = new BitmapImage(new Uri("/Images/crepe_realiste.png", UriKind.Relative));
+                    imgCrepe2.Visibility = Visibility.Visible;
+                    imgCrepe1.Visibility = Visibility.Hidden;
 
-                Canvas.SetLeft(imgPoele, 312);
-                Canvas.SetTop(imgPoele, 276);
-                PoeleRotation.Angle = 0;
+                    // Remettre la poêle à sa position normale
+                    Canvas.SetLeft(imgPoele, 312);
+                    Canvas.SetTop(imgPoele, 276);
+                    PoeleRotation.Angle = 0;
 
-                txtTimer.Text = "";
+                    txtTimer.Text = "";
+                }
+                else
+                {
+                    // L'assiette est occupée, la crêpe cuite reste dans la poêle
+                    // LA POÊLE RESTE INCLINÉE ET NE BOUGE PAS
+                    // On garde imgCrepe1 visible pour pouvoir la garnir
+                    txtTimer.Text = "Assiette occupée ! Vendez d'abord.";
+                }
             }
         }
 
@@ -339,6 +357,23 @@ namespace Crepe_Simulator
 
                     // IMPORTANT : Réinitialiser l'image de la crêpe à la crêpe de base
                     imgCrepe2.Source = new BitmapImage(new Uri("/Images/crepe_realiste.png", UriKind.Relative));
+
+                    // NOUVEAU : Vérifier s'il y a une crêpe en attente dans la poêle
+                    if (imgCrepe1.Visibility == Visibility.Visible && tempsRestantPreparation <= 0)
+                    {
+                        // Transférer la crêpe de la poêle vers l'assiette
+                        imgCrepe2.Source = imgCrepe1.Source;
+                        imgCrepe2.Visibility = Visibility.Visible;
+                        imgCrepe1.Visibility = Visibility.Hidden;
+
+                        // NOUVEAU : Remettre la poêle à sa position normale après le transfert
+                        Canvas.SetLeft(imgPoele, 312);
+                        Canvas.SetTop(imgPoele, 276);
+                        PoeleRotation.Angle = 0;
+
+                        // Effacer le message d'assiette occupée
+                        txtTimer.Text = "";
+                    }
                 }
                 else
                 {
@@ -352,41 +387,63 @@ namespace Crepe_Simulator
 
         private void but_nuttela(object sender, RoutedEventArgs e)
         {
-            if (tempsRestantPreparation <= 0 && imgCrepe2.Visibility == Visibility.Visible)
+            // Peut garnir la crêpe sur l'assiette même si une autre cuit dans la poêle
+            if (imgCrepe2.Visibility == Visibility.Visible)
             {
                 imgCrepe2.Source = new BitmapImage(new Uri("/Images/crepes/crepe_nutella.png", UriKind.Relative));
+            }
+            // Peut garnir la crêpe dans la poêle SI la cuisson est terminée
+            else if (tempsRestantPreparation <= 0 && imgCrepe1.Visibility == Visibility.Visible)
+            {
+                imgCrepe1.Source = new BitmapImage(new Uri("/Images/crepes/crepe_nutella.png", UriKind.Relative));
             }
         }
 
         private void but_caramel(object sender, RoutedEventArgs e)
         {
-            if (tempsRestantPreparation <= 0 && imgCrepe2.Visibility == Visibility.Visible)
+            if (imgCrepe2.Visibility == Visibility.Visible)
             {
                 imgCrepe2.Source = new BitmapImage(new Uri("/Images/crepes/crepe_caramele.png", UriKind.Relative));
+            }
+            else if (tempsRestantPreparation <= 0 && imgCrepe1.Visibility == Visibility.Visible)
+            {
+                imgCrepe1.Source = new BitmapImage(new Uri("/Images/crepes/crepe_caramele.png", UriKind.Relative));
             }
         }
 
         private void but_confutture(object sender, RoutedEventArgs e)
         {
-            if (tempsRestantPreparation <= 0 && imgCrepe2.Visibility == Visibility.Visible)
+            if (imgCrepe2.Visibility == Visibility.Visible)
             {
                 imgCrepe2.Source = new BitmapImage(new Uri("/Images/crepes/crepe_confitture.png", UriKind.Relative));
+            }
+            else if (tempsRestantPreparation <= 0 && imgCrepe1.Visibility == Visibility.Visible)
+            {
+                imgCrepe1.Source = new BitmapImage(new Uri("/Images/crepes/crepe_confitture.png", UriKind.Relative));
             }
         }
 
         private void but_cmiel(object sender, RoutedEventArgs e)
         {
-            if (tempsRestantPreparation <= 0 && imgCrepe2.Visibility == Visibility.Visible)
+            if (imgCrepe2.Visibility == Visibility.Visible)
             {
                 imgCrepe2.Source = new BitmapImage(new Uri("/Images/crepes/crepe_chevremiel.png", UriKind.Relative));
+            }
+            else if (tempsRestantPreparation <= 0 && imgCrepe1.Visibility == Visibility.Visible)
+            {
+                imgCrepe1.Source = new BitmapImage(new Uri("/Images/crepes/crepe_chevremiel.png", UriKind.Relative));
             }
         }
 
         private void but_sucre(object sender, RoutedEventArgs e)
         {
-            if (tempsRestantPreparation <= 0 && imgCrepe2.Visibility == Visibility.Visible)
+            if (imgCrepe2.Visibility == Visibility.Visible)
             {
                 imgCrepe2.Source = new BitmapImage(new Uri("/Images/crepes/crepe_sucre.png", UriKind.Relative));
+            }
+            else if (tempsRestantPreparation <= 0 && imgCrepe1.Visibility == Visibility.Visible)
+            {
+                imgCrepe1.Source = new BitmapImage(new Uri("/Images/crepes/crepe_sucre.png", UriKind.Relative));
             }
         }
     }
