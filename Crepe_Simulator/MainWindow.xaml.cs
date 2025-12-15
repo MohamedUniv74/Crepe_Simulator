@@ -16,11 +16,12 @@ namespace Crepe_Simulator
     /// </summary>
     public partial class MainWindow : Window
     {
+
+
         public MainWindow()
         {
             InitializeComponent();
             AfficheDemarrage();
-            
 
         }
 

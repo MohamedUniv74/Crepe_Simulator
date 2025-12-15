@@ -166,12 +166,17 @@
                 <Image x:Name="imgcmd1" Source="/images/commandes/cmd_nutella.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="160" Canvas.Top="15"/>
 
                 <Image x:Name="imgClient3" Source="/images/clients/client3.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="300" Canvas.Top="55"/>
-                <Image x:Name="imgcmd2" Source="/images/commandes/cmd_caramele.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="60" Canvas.Top="15"/>
-
+                <Image x:Name="imgcmd2" Source="/images/commandes/cmd_caramel.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="370" Canvas.Top="15"/>
 
                 <Image x:Name="imgClient4" Source="/images/clients/client4.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="500" Canvas.Top="55"/>
+                <Image x:Name="imgcmd3" Source="/images/commandes/cmd_cmiel.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="560" Canvas.Top="15"/>
                 
                 <Image x:Name="imgClient5" Source="/images/clients/client5.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="200" Canvas.Top="55"/>
+                <Image x:Name="imgcmd4" Source="/images/commandes/cmd_confitture.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="160" Canvas.Top="15"/>
+
+
+                <Image x:Name="imgClient6" Source="/images/clients/client5.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="200" Canvas.Top="55"/>
+                <Image x:Name="imgcmd5" Source="/images/commandes/cmd_sucre.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="160" Canvas.Top="15"/>
 
 
             </Canvas>

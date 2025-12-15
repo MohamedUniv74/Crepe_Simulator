@@ -7,6 +7,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 
+
 namespace Crepe_Simulator
 {
     /// <summary>
@@ -19,7 +20,7 @@ namespace Crepe_Simulator
         DispatcherTimer timerPreparation;
         int tempsRestantPreparation = 15;
 
-       
+
         public UCJeu()
         {
             InitializeComponent();
@@ -29,6 +30,9 @@ namespace Crepe_Simulator
             timerPreparation.Interval = TimeSpan.FromSeconds(1);
             timerPreparation.Tick += Timer_Preparation;
 
+
+
+          
         }
 
         private void InitialiserTimer()
@@ -77,6 +81,7 @@ namespace Crepe_Simulator
             if ((int)tempsRestant.TotalSeconds == 30)
             {
                 imgClient4.Visibility = Visibility.Visible;
+                imgcmd3.Visibility = Visibility.Visible;
             }
 
 
