@@ -161,11 +161,96 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Content="Nutelle" Canvas.Left="46" Canvas.Top="311" Height="15" Width="28" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="7" Background="#FFFFA9A9" Click="but_nuttela"/>
-                <Button Content="Caramel" Canvas.Left="127" Canvas.Top="311" Height="15" Width="28" FontSize="7" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#FFFFA9A9" Click="but_caramel"/>
-                <Button Content="Sucre" Canvas.Left="127" Canvas.Top="386" Height="15" Width="28" FontSize="7" HorizontalAlignment="Center" VerticalAlignment="Top" Background="#FFFFA9A9" Click="but_sucre" />
-                <Button Content="Confitture" Canvas.Left="46" Canvas.Top="383" Height="15" Width="28" FontSize="7" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#FFFFA9A9" Click="but_confutture"/>
-                <Button Content="C-Mile" Canvas.Left="211" Canvas.Top="362" Height="14" Width="28" FontSize="7" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFFFA9A9" Click="but_cmiel"/>
+                <Button Content="Nutella" Canvas.Left="46" Canvas.Top="311" Height="15" Width="28" 
+                        FontSize="7" FontWeight="Bold" Foreground="White"
+                        Background="#FF7B3F00" 
+                        Click="but_nuttela">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" 
+                                    BorderBrush="#FF3D1F00" 
+                                    BorderThickness="1.5" 
+                                    CornerRadius="4">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="Black" BlurRadius="2" ShadowDepth="1" Opacity="0.5"/>
+                                </Border.Effect>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Content="Caramel" Canvas.Left="125" Canvas.Top="311" Height="15" Width="35" 
+                        FontSize="7" FontWeight="Bold" Foreground="White"
+                        Background="#FFCC8844" 
+                        Click="but_caramel" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" 
+                                    BorderBrush="#FF8B5A2B" 
+                                    BorderThickness="1.5" 
+                                    CornerRadius="4">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="Black" BlurRadius="2" ShadowDepth="1" Opacity="0.5"/>
+                                </Border.Effect>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Content="Sucre" Canvas.Left="127" Canvas.Top="386" Height="15" Width="28" 
+                        FontSize="7" FontWeight="Bold" Foreground="#FF333333"
+                        Background="#FFEEEEEE" 
+                        Click="but_sucre">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" 
+                                    BorderBrush="#FFCCCCCC" 
+                                    BorderThickness="1.5" 
+                                    CornerRadius="4">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="Black" BlurRadius="2" ShadowDepth="1" Opacity="0.5"/>
+                                </Border.Effect>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Content="Confitture" Canvas.Left="39" Canvas.Top="383" Height="15" Width="44" 
+                        FontSize="7" FontWeight="Bold" Foreground="White"
+                        Background="#FFCC2244" 
+                        Click="but_confutture" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" 
+                                    BorderBrush="#FF8B0000" 
+                                    BorderThickness="1.5" 
+                                    CornerRadius="4">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="Black" BlurRadius="2" ShadowDepth="1" Opacity="0.5"/>
+                                </Border.Effect>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Content="C-Mile" Canvas.Left="211" Canvas.Top="362" Height="14" Width="28" 
+                        FontSize="7" FontWeight="Bold" Foreground="#FF333333"
+                        Background="#FFFFCC66" 
+                        Click="but_cmiel">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" 
+                                    BorderBrush="#FFCC9933" 
+                                    BorderThickness="1.5" 
+                                    CornerRadius="4">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="Black" BlurRadius="2" ShadowDepth="1" Opacity="0.5"/>
+                                </Border.Effect>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
 
 
                 <Image x:Name="imgClient2" Source="/images/clients/client2.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="100" Canvas.Top="55"/>
