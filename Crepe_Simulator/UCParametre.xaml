@@ -27,7 +27,7 @@
                     Click="Bouton_volume_Click"/>
 
             <!-- Bouton Temps -->
-            <Button Content="Temps : 5min"
+            <Button Content="  Temps "
                     FontWeight="Bold" Background="PeachPuff"
                     Width="300" Height="80" FontSize="28"
                     HorizontalAlignment="Center"

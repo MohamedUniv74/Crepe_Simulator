@@ -7,19 +7,84 @@
              mc:Ignorable="d" 
              d:DesignHeight="1080" d:DesignWidth="1920">
     <Grid RenderTransformOrigin="0.481,0.508">
+        <Rectangle HorizontalAlignment="Center" Height="400" Stroke="Black" VerticalAlignment="Center" Width="650" Fill="#FFECD8AE" Opacity="0.7" RadiusX="30.75" RadiusY="30.75"/>
 
-        <Rectangle HorizontalAlignment="Center" Height="318" Stroke="Black" VerticalAlignment="Center" Width="584" Fill="#FFECD8AE" Opacity="0.7" RadiusX="30.75" RadiusY="30.75"/>
-        <Label Content="Temps de jeu" HorizontalAlignment="Center" Margin="0,426,0,0" VerticalAlignment="Top" FontSize="36"/>
-        <Button x:Name="bouton_annuler" Content="Annuler" HorizontalAlignment="Left" Margin="1058,626,0,0" VerticalAlignment="Top" Width="64" Height="28" Click="bouton_annuler_Click"/>
-        <ComboBox x:Name="MaListe"
-          Width="200"
-          Height="25"
-          HorizontalAlignment="Center"
-          VerticalAlignment="Center">
-            <ComboBoxItem Content="1 mn"/>
-            <ComboBoxItem Content="2 mns"/>
-            <ComboBoxItem Content="3 mns"/>
-        </ComboBox>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="500">
+            <!-- Titre -->
+            <Label Content="Temps de jeu" HorizontalAlignment="Center" FontSize="36" FontWeight="Bold" Margin="0,0,0,30"/>
 
+            <!-- Affichage du temps sélectionné -->
+            <TextBlock x:Name="txtTempsAffiche" 
+                       Text="1 minute" 
+                       FontSize="48" 
+                       FontWeight="Bold" 
+                       HorizontalAlignment="Center" 
+                       Foreground="#FF2C3E50"
+                       Margin="0,0,0,40"/>
+
+            <!-- Slider -->
+            <Slider x:Name="sliderTemps" 
+                    Minimum="1" 
+                    Maximum="30" 
+                    Value="1" 
+                    TickFrequency="1" 
+                    IsSnapToTickEnabled="True"
+                    Width="450"
+                    Height="40"
+                    ValueChanged="sliderTemps_ValueChanged"
+                    Margin="0,0,0,20"/>
+
+            <!-- Labels min et max -->
+            <Grid Width="450" Margin="0,0,0,30">
+                <TextBlock Text="1 min" HorizontalAlignment="Left" FontSize="14" Foreground="#FF555555"/>
+                <TextBlock Text="30 min" HorizontalAlignment="Right" FontSize="14" Foreground="#FF555555"/>
+            </Grid>
+
+            <!-- Boutons -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                <Button x:Name="bouton_valider" 
+                        Content="Valider" 
+                        Width="120" 
+                        Height="40" 
+                        FontSize="16"
+                        FontWeight="Bold"
+                        Background="#FF4CAF50" 
+                        Foreground="White"
+                        Margin="0,0,20,0"
+                        Click="bouton_valider_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" 
+                                    BorderBrush="Black" 
+                                    BorderThickness="2" 
+                                    CornerRadius="8">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <Button x:Name="bouton_annuler" 
+                        Content="Annuler" 
+                        Width="120" 
+                        Height="40" 
+                        FontSize="16"
+                        FontWeight="Bold"
+                        Background="#FFFF5252" 
+                        Foreground="White"
+                        Click="bouton_annuler_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" 
+                                    BorderBrush="Black" 
+                                    BorderThickness="2" 
+                                    CornerRadius="8">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -35,7 +35,7 @@ namespace Crepe_Simulator
         private void InitialiserTimer()
         {
             // Initialiser le temps voulu 
-            tempsRestant = TimeSpan.FromMinutes(1);//changer la valeur entre parenthese pour modifier le temps de jeu
+            tempsRestant = TimeSpan.FromMinutes(UCTemps.TempsChoisi);//changer la valeur entre parenthese pour modifier le temps de jeu
             label_timer.Text = tempsRestant.ToString(@"mm\:ss");
 
 
