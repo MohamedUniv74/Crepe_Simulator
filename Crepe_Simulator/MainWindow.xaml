@@ -3,13 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="Crepe_Simulator.MainWindow"
         Title="Creperie Simulator" 
-        WindowState="Maximized" av:DesignHeight="125.627" av:DesignWidth="459.543">
+        WindowState="Normal" 
+        Width="1024" 
+        Height="768"
+        av:DesignHeight="125.627" av:DesignWidth="459.543">
     <Grid>
-
         <Grid.Background>
             <ImageBrush ImageSource="/images/pink_background.png" Stretch="UniformToFill"/>
         </Grid.Background>
-
         <ContentControl x:Name="ZoneJeu"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"/>

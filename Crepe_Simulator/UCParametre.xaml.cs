@@ -49,15 +49,17 @@ namespace Crepe_Simulator
                 if (mainWindow.WindowState == WindowState.Maximized && mainWindow.WindowStyle == WindowStyle.None)
                 {
                     // Désactiver le fullscreen
-                    mainWindow.WindowState = WindowState.Normal;
                     mainWindow.WindowStyle = WindowStyle.SingleBorderWindow;
                     mainWindow.ResizeMode = ResizeMode.CanResize;
+                    mainWindow.WindowState = WindowState.Normal;
                 }
                 else
                 {
-                    // Activer le fullscreen
+                    // Activer le fullscreen - ORDRE IMPORTANT!
                     mainWindow.WindowStyle = WindowStyle.None;
                     mainWindow.ResizeMode = ResizeMode.NoResize;
+                    // Forcer le rafraîchissement avant de maximiser
+                    mainWindow.UpdateLayout();
                     mainWindow.WindowState = WindowState.Maximized;
                 }
                 UpdateFullscreenButtonText();
