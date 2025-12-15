@@ -89,24 +89,24 @@
                 </Button>
 
                 <!-- Chevremiel -->
-                <Image Canvas.Left="193" Canvas.Top="290" Width="74" Height="70" 
+                <Image Canvas.Left="197" Canvas.Top="293" Width="56" Height="54" 
                        Source="/images/Chevremiel.png" Stretch="Fill"/>
 
                 <!-- Caramel -->
-                <Image Canvas.Left="116" Canvas.Top="269" Width="56" Height="66" 
-                       Source="/images/caramel.png" Stretch="Fill"/>
+                <Image Canvas.Left="127" Canvas.Top="271" Width="33" Height="39" 
+                       Source="/images/caramel.png" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
                 <!-- Jelly -->
-                <Image Canvas.Left="34" Canvas.Top="340" Width="53" Height="67" 
-                       Source="/images/jelly.png" Stretch="Fill"/>
+                <Image Canvas.Left="46" Canvas.Top="340" Width="28" Height="43" 
+                       Source="/images/jelly.png" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
                 <!-- Nutella -->
-                <Image Canvas.Left="34" Canvas.Top="267" Width="55" Height="63" 
-                       Source="/images/nutella.png" Stretch="Fill" AllowDrop="True"/>
+                <Image Canvas.Left="42" Canvas.Top="269" Width="36" Height="41" 
+                       Source="/images/nutella.png" Stretch="Fill" AllowDrop="True" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
                 <!-- Sucre -->
-                <Image Canvas.Left="116" Canvas.Top="340" Width="55" Height="73" 
-                       Source="/images/sucre.png" Stretch="Fill"/>
+                <Image Canvas.Left="127" Canvas.Top="340" Width="33" Height="50" 
+                       Source="/images/sucre.png" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
                 <!-- Poubelle -->
                 <Image Canvas.Left="673" Canvas.Top="250" Width="117" Height="140" 
@@ -155,6 +155,24 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
+                <Button Content="Nutelle" Canvas.Left="46" Canvas.Top="311" Height="15" Width="28" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="7" Background="#FFFFA9A9" Click="but_nuttela"/>
+                <Button Content="Caramel" Canvas.Left="127" Canvas.Top="311" Height="15" Width="28" FontSize="7" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#FFFFA9A9" Click="but_caramel"/>
+                <Button Content="Sucre" Canvas.Left="127" Canvas.Top="386" Height="15" Width="28" FontSize="7" HorizontalAlignment="Center" VerticalAlignment="Top" Background="#FFFFA9A9" Click="but_sucre" />
+                <Button Content="Confitture" Canvas.Left="46" Canvas.Top="383" Height="15" Width="28" FontSize="7" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#FFFFA9A9" Click="but_confutture"/>
+                <Button Content="C-Mile" Canvas.Left="211" Canvas.Top="362" Height="14" Width="28" FontSize="7" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFFFA9A9" Click="but_cmiel"/>
+
+
+                <Image x:Name="imgClient2" Source="/images/clients/client2.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="100" Canvas.Top="55"/>
+                <Image x:Name="imgcmd1" Source="/images/commandes/cmd_nutella.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="160" Canvas.Top="15"/>
+
+                <Image x:Name="imgClient3" Source="/images/clients/client3.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="300" Canvas.Top="55"/>
+                <Image x:Name="imgcmd2" Source="/images/commandes/cmd_caramele.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="60" Canvas.Top="15"/>
+
+
+                <Image x:Name="imgClient4" Source="/images/clients/client4.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="500" Canvas.Top="55"/>
+                
+                <Image x:Name="imgClient5" Source="/images/clients/client5.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="200" Canvas.Top="55"/>
+
 
             </Canvas>
         </Viewbox>

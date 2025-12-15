@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Media;
+using System.Numerics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Threading;
-using System.Media;
 
 namespace Crepe_Simulator
 {
@@ -16,7 +19,7 @@ namespace Crepe_Simulator
         DispatcherTimer timerPreparation;
         int tempsRestantPreparation = 15;
 
-
+       
         public UCJeu()
         {
             InitializeComponent();
@@ -25,6 +28,7 @@ namespace Crepe_Simulator
             timerPreparation = new DispatcherTimer();
             timerPreparation.Interval = TimeSpan.FromSeconds(1);
             timerPreparation.Tick += Timer_Preparation;
+
         }
 
         private void InitialiserTimer()
@@ -32,6 +36,8 @@ namespace Crepe_Simulator
             // Initialiser le temps voulu 
             tempsRestant = TimeSpan.FromMinutes(1);//changer la valeur entre parenthese pour modifier le temps de jeu
             label_timer.Text = tempsRestant.ToString(@"mm\:ss");
+
+
 
             // Créer le timer qui se déclenche chaque seconde
             timer = new DispatcherTimer();
@@ -47,6 +53,37 @@ namespace Crepe_Simulator
 
             // Mettre à jour l'affichage
             label_timer.Text = tempsRestant.ToString(@"mm\:ss");
+
+
+
+
+
+            if ((int)tempsRestant.TotalSeconds == 50)
+            {
+                imgClient2.Visibility = Visibility.Visible;
+                imgcmd1.Visibility = Visibility.Visible;
+
+            }
+
+
+            if ((int)tempsRestant.TotalSeconds == 40)
+            {
+                imgClient3.Visibility = Visibility.Visible;
+                imgcmd2.Visibility = Visibility.Visible;
+            }
+
+
+
+            if ((int)tempsRestant.TotalSeconds == 30)
+            {
+                imgClient4.Visibility = Visibility.Visible;
+            }
+
+
+
+
+
+
 
             // Vérifier si le temps est écoulé
             if (tempsRestant.TotalSeconds <= 0)
@@ -120,5 +157,55 @@ namespace Crepe_Simulator
             }
         }
 
+
+
+
+        private void but_nuttela(object sender, RoutedEventArgs e)
+        {
+            if (tempsRestantPreparation <= 0)
+            {
+                // changer l’image de la crêpe
+                imgCrepe.Source = new BitmapImage(new Uri("/Images/crepes/crepe_nutella.png", UriKind.Relative));
+
+
+            }
+        }
+
+        private void but_caramel(object sender, RoutedEventArgs e)
+        {
+            if (tempsRestantPreparation <= 0)
+            {
+                // changer l’image de la crêpe
+                imgCrepe.Source = new BitmapImage(new Uri("/Images/crepes/crepe_caramele.png", UriKind.Relative));
+            }
+        }
+
+        private void but_confutture(object sender, RoutedEventArgs e)
+        {
+            if (tempsRestantPreparation <= 0)
+            {
+                // changer l’image de la crêpe
+                imgCrepe.Source = new BitmapImage(new Uri("/Images/crepes/crepe_confitture.png", UriKind.Relative));
+            }
+        }
+
+        private void but_cmiel(object sender, RoutedEventArgs e)
+        {
+            if (tempsRestantPreparation <= 0)
+            {
+                // changer l’image de la crêpe
+                imgCrepe.Source = new BitmapImage(new Uri("/Images/crepes/crepe_chevremiel.png", UriKind.Relative));
+            }
+        }
+
+        private void but_sucre(object sender, RoutedEventArgs e)
+        {
+            if (tempsRestantPreparation <= 0)
+            {
+                // changer l’image de la crêpe
+                imgCrepe.Source = new BitmapImage(new Uri("/Images/crepes/crepe_sucre.png", UriKind.Relative));
+            }
+
+        }
     }
 }
