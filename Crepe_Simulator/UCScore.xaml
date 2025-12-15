@@ -7,9 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <!-- Image de fond -->
-        <Image Source="/images/blury-background.png" Stretch="Fill"/>
-
+        
         <!-- Viewbox pour maintenir les proportions -->
         <Viewbox Stretch="Uniform">
             <Canvas Width="800" Height="450">

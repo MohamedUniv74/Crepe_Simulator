@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System.Net;
+using System.Runtime.InteropServices;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -22,6 +24,7 @@ namespace Crepe_Simulator
         {
             InitializeComponent();
             AfficheDemarrage();
+           
 
         }
 
@@ -54,6 +57,36 @@ namespace Crepe_Simulator
         }
 
 
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+       
+         private static MediaPlayer musique;
+
+         private void InitMusique()
+         {
+            musique = new MediaPlayer();
+            musique.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory+ "sons/matin-insouciant.mp3"));
+            musique.MediaEnded += RelanceMusique;
+            musique.Volume = 0.5;
+            musique.Play();
+         }
+         private void RelanceMusique(object? sender, EventArgs e)
+         {
+            musique.Position = TimeSpan.Zero;
+            musique.Play();
+         }
 
 
 
