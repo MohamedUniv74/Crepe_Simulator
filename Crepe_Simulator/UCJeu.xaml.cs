@@ -35,10 +35,10 @@ namespace Crepe_Simulator
             InitializeComponent();
             InitialiserTimer();
 
-            /*Initialiser le score à 100 au début du jeu pour essayer le système d'amélioration
-            Score = 100;
+            // Initialiser le score à 50 au début du jeu
+            Score = 50;
             MettreAJourAffichageScore();
-            MettreAJourBoutonAmelioration();*/
+            MettreAJourBoutonAmelioration();
 
             timerPreparation = new DispatcherTimer();
             timerPreparation.Interval = TimeSpan.FromSeconds(1);
@@ -57,13 +57,24 @@ namespace Crepe_Simulator
             if (bouton_ameliorer != null)
             {
                 int tempsApresAmelioration = tempsCuissonActuel - REDUCTION_TEMPS;
-                bouton_ameliorer.Content = $"⚡ Améliorer ({COUT_AMELIORATION}€)\nTemps: {tempsApresAmelioration}s";
+
+                // Créer un TextBlock pour pouvoir contrôler l'opacité du texte
+                TextBlock textBlock = new TextBlock
+                {
+                    Text = $"⚡ Améliorer ({COUT_AMELIORATION}€)\nTemps: {tempsApresAmelioration}s",
+                    TextAlignment = System.Windows.TextAlignment.Center,
+                    FontWeight = FontWeights.Bold,
+                    FontSize = 9,
+                    Foreground = new SolidColorBrush(Colors.White)
+                };
+
+                bouton_ameliorer.Content = textBlock;
 
                 // Désactiver le bouton si pas assez d'argent ou temps minimum atteint
                 bouton_ameliorer.IsEnabled = Score >= COUT_AMELIORATION && tempsCuissonActuel > 2;
 
-                // Changer l'opacité si désactivé
-                bouton_ameliorer.Opacity = (Score >= COUT_AMELIORATION && tempsCuissonActuel > 2) ? 1.0 : 0.5;
+                // Changer l'opacité du texte si désactivé
+                textBlock.Opacity = (Score >= COUT_AMELIORATION && tempsCuissonActuel > 2) ? 1.0 : 0.4;
             }
         }
 
@@ -83,22 +94,19 @@ namespace Crepe_Simulator
             tempsRestant = tempsRestant.Subtract(TimeSpan.FromSeconds(1));
             label_timer.Text = tempsRestant.ToString(@"mm\:ss");
 
-            int tempsTotalSecondes = UCTemps.TempsChoisi * 60; // Conversion en secondes
-
-
-            if ((int)tempsRestant.TotalSeconds == (int)(tempsTotalSecondes * 0.83))
+            if ((int)tempsRestant.TotalSeconds == 50)
             {
                 imgClient2.Visibility = Visibility.Visible;
                 imgcmd1.Visibility = Visibility.Visible;
             }
 
-            if ((int)tempsRestant.TotalSeconds == (int)(tempsTotalSecondes * 0.66))
+            if ((int)tempsRestant.TotalSeconds == 40)
             {
                 imgClient3.Visibility = Visibility.Visible;
                 imgcmd2.Visibility = Visibility.Visible;
             }
 
-            if ((int)tempsRestant.TotalSeconds == (int)(tempsTotalSecondes * 0.50))
+            if ((int)tempsRestant.TotalSeconds == 30)
             {
                 imgClient4.Visibility = Visibility.Visible;
                 imgcmd3.Visibility = Visibility.Visible;

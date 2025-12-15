@@ -85,4 +85,10 @@
     <Resource Include="sons\son_cuisson.wav" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="sons\matin-insouciant.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
