@@ -12,26 +12,121 @@
         <Viewbox Stretch="Uniform">
             <Canvas Width="800" Height="450">
 
-                <!-- Label Score centré -->
-                <Label Content="SCORE : 000" 
-                       Canvas.Left="146" Canvas.Top="90"
-                       Width="508" Height="119" 
-                       FontSize="48" FontWeight="Bold"
-                       HorizontalContentAlignment="Center"
-                       VerticalContentAlignment="Center"/>
+                <!-- Panneau de score avec effet -->
+                <Border Canvas.Left="200" Canvas.Top="60"
+                        Width="400" Height="330"
+                        Background="#E0FFFFFF"
+                        BorderBrush="#FFFFB105"
+                        BorderThickness="4"
+                        CornerRadius="25">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#FFFFB105" BlurRadius="30" ShadowDepth="0" Opacity="0.8"/>
+                    </Border.Effect>
+                </Border>
 
-                <!-- Bouton Rejouer centré -->
-                <Button x:Name="bouton_rejouer" Content="Rejouer" 
-                        Canvas.Left="325" Canvas.Top="250"
-                        Width="150" Height="35" 
-                        FontWeight="Bold" 
-                        Background="peachpuff">
+                <!-- Titre "PARTIE TERMINÉE" -->
+                <TextBlock Canvas.Left="200" Canvas.Top="85"
+                           Width="400" Height="60"
+                           Text="PARTIE TERMINÉE !"
+                           FontSize="32" FontWeight="Bold"
+                           Foreground="#FF2C3E50"
+                           TextAlignment="Center"
+                           VerticalAlignment="Center"/>
+
+                <!-- Icône trophée -->
+                <Viewbox Canvas.Left="350" Canvas.Top="145" Width="100" Height="100">
+                    <Canvas Width="100" Height="100">
+                        <!-- Coupe du trophée -->
+                        <Path Data="M30,40 L30,60 Q30,70 40,70 L60,70 Q70,70 70,60 L70,40 M25,40 L75,40 M50,70 L50,85 M35,85 L65,85" 
+                              Stroke="#FFFFB105" StrokeThickness="5" Fill="#FFFFD700"/>
+                        <!-- Poignées -->
+                        <Path Data="M25,35 Q15,35 15,45 Q15,55 25,55" 
+                              Stroke="#FFFFB105" StrokeThickness="4" Fill="Transparent"/>
+                        <Path Data="M75,35 Q85,35 85,45 Q85,55 75,55" 
+                              Stroke="#FFFFB105" StrokeThickness="4" Fill="Transparent"/>
+                        <!-- Étoile au centre -->
+                        <Path Data="M50,25 L52,32 L59,32 L54,37 L56,44 L50,40 L44,44 L46,37 L41,32 L48,32 Z" 
+                              Fill="#FFFF6B00"/>
+                    </Canvas>
+                </Viewbox>
+
+                <!-- Label "VOTRE SCORE" -->
+                <TextBlock Canvas.Left="200" Canvas.Top="255"
+                           Width="400" Height="35"
+                           Text="VOTRE SCORE"
+                           FontSize="20" FontWeight="SemiBold"
+                           Foreground="#FF7F8C8D"
+                           TextAlignment="Center"/>
+
+                <!-- Cadre du score -->
+                <Border Canvas.Left="275" Canvas.Top="295"
+                        Width="250" Height="70"
+                        Background="#FF2C3E50"
+                        BorderBrush="#FFFFB105"
+                        BorderThickness="3"
+                        CornerRadius="15">
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="3" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+
+                <!-- Icône euro -->
+                <Viewbox Canvas.Left="290" Canvas.Top="310" Width="40" Height="40">
+                    <Canvas Width="24" Height="24">
+                        <Ellipse Width="24" Height="24" Stroke="#FFFFB105" StrokeThickness="2.5" Fill="#FFFFD700"/>
+                        <TextBlock Text="€" FontSize="16" FontWeight="Bold" 
+                                   Foreground="#FF2C3E50" Canvas.Left="7" Canvas.Top="2"/>
+                    </Canvas>
+                </Viewbox>
+
+                <!-- Label Score avec valeur -->
+                <TextBlock x:Name="label_score" 
+                           Canvas.Left="335" Canvas.Top="305"
+                           Width="175" Height="60"
+                           Text="0€"
+                           FontSize="42" FontWeight="Bold"
+                           Foreground="#FFFFB105"
+                           TextAlignment="Center"
+                           VerticalAlignment="Center"/>
+
+                <!-- Bouton Rejouer -->
+                <Button x:Name="bouton_rejouer" Content="🔄  REJOUER" 
+                        Canvas.Left="250" Canvas.Top="385"
+                        Width="140" Height="45" 
+                        FontSize="16" FontWeight="Bold" 
+                        Foreground="White"
+                        Background="#FF27C93F">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" 
-                                    BorderBrush="Black" 
-                                    BorderThickness="2" 
-                                    CornerRadius="10">
+                                    BorderBrush="#FF1E8E2E" 
+                                    BorderThickness="3" 
+                                    CornerRadius="12">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="Black" BlurRadius="8" ShadowDepth="3" Opacity="0.6"/>
+                                </Border.Effect>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <!-- Bouton Menu -->
+                <Button x:Name="bouton_menu" Content="🏠  ACCUEIL" 
+                        Canvas.Left="410" Canvas.Top="385"
+                        Width="140" Height="45" 
+                        FontSize="16" FontWeight="Bold" 
+                        Foreground="White"
+                        Background="#FF3498DB">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" 
+                                    BorderBrush="#FF2874A6" 
+                                    BorderThickness="3" 
+                                    CornerRadius="12">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="Black" BlurRadius="8" ShadowDepth="3" Opacity="0.6"/>
+                                </Border.Effect>
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>
