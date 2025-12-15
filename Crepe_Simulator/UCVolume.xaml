@@ -8,10 +8,13 @@
              d:DesignHeight="1080" d:DesignWidth="1920">
     <Grid>
         <Rectangle HorizontalAlignment="Center" Height="317" Stroke="Black" VerticalAlignment="Center" Width="584" Fill="#FFECD8AE" Opacity="0.7" RadiusX="30.75" RadiusY="30.75"/>
-        <Slider x:Name="son_curseur" HorizontalAlignment="Left" Margin="830,561,0,0" VerticalAlignment="Top" Width="298" Height="28"/>
-        <Label Content="Son" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Height="42" Width="54" FontSize="24" Margin="761,547,0,0"/>
-        <Label Content="Volume son" HorizontalAlignment="Center" Margin="0,463,0,0" VerticalAlignment="Top" FontSize="36" Height="54" Width="216"/>
-        <Button x:Name="bouton_valider" Content="Valider" HorizontalAlignment="Center" Margin="0,237,152,0" VerticalAlignment="Center" Width="64" Height="28"/>
-        <Button x:Name="bouton_annuler" Content="Annuler" HorizontalAlignment="Center" Margin="152,237,0,0" VerticalAlignment="Center" Width="64" Height="28" Click="bouton_annuler_Click"/>
+
+        <Canvas HorizontalAlignment="Center" VerticalAlignment="Center" Width="584" Height="317">
+            <Label Content="Volume son" Canvas.Left="184" Canvas.Top="32" FontSize="36" Height="54" Width="216"/>
+            <Label Content="Son" Canvas.Left="85" Canvas.Top="145" FontWeight="Bold" Height="41" Width="55" FontSize="24"/>
+            <Slider x:Name="son_curseur" Canvas.Left="161" Canvas.Top="158" Width="298" Height="28"/>
+            <Button x:Name="bouton_valider" Content="Valider" Canvas.Left="184" Canvas.Top="243" Width="64" Height="28"/>
+            <Button x:Name="bouton_annuler" Content="Annuler" Canvas.Left="336" Canvas.Top="243" Width="64" Height="28" Click="bouton_annuler_Click"/>
+        </Canvas>
     </Grid>
 </UserControl>
