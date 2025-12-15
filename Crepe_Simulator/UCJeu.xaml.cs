@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
+using System.Linq;
 using System.Media;
 using System.Numerics;
 using System.Threading.Tasks;
@@ -30,19 +32,97 @@ namespace Crepe_Simulator
         private const int COUT_AMELIORATION = 50; // Coût de l'amélioration
         private const int REDUCTION_TEMPS = 2; // Réduction de temps par amélioration
 
+        // AJOUT : Système de spawn régulier et aléatoire des clients
+        private Random random = new Random();
+        private List<ClientSpawn> listeSpawns = new List<ClientSpawn>();
+
+        // Classe pour stocker les informations de spawn
+        private class ClientSpawn
+        {
+            public int TempsSpawn { get; set; }
+            public Image ImageClient { get; set; }
+            public Image ImageCommande { get; set; }
+            public bool Spawned { get; set; } = false;
+        }
+
         public UCJeu()
         {
             InitializeComponent();
+
+            // IMPORTANT : Générer les temps de spawn AVANT d'initialiser le timer
+            GenererSpawnsAleatoires();
+
             InitialiserTimer();
 
             // Initialiser le score à 50 au début du jeu
-            Score = 0;
+            Score = 50;
             MettreAJourAffichageScore();
             MettreAJourBoutonAmelioration();
 
             timerPreparation = new DispatcherTimer();
             timerPreparation.Interval = TimeSpan.FromSeconds(1);
             timerPreparation.Tick += Timer_Preparation;
+        }
+
+        // AJOUT : Méthode pour générer plusieurs spawns aléatoires
+        private void GenererSpawnsAleatoires()
+        {
+            int tempsTotalSecondes = UCTemps.TempsChoisi * 60;
+
+            // Calculer le nombre de clients en fonction du temps (1 client toutes les 8-10 secondes)
+            int nombreClients = Math.Max(5, tempsTotalSecondes / 8);
+
+            // Créer une liste de tous les clients disponibles
+            List<(Image client, Image commande)> clientsDisponibles = new List<(Image, Image)>
+            {
+                (imgClient2, imgcmd1),
+                (imgClient3, imgcmd2),
+                (imgClient4, imgcmd3)
+            };
+
+            // Générer des temps de spawn répartis sur toute la durée
+            List<int> tempsSpawns = new List<int>();
+
+            // Premier client apparaît très rapidement (dans les 3-5 premières secondes)
+            tempsSpawns.Add(tempsTotalSecondes - random.Next(3, 6));
+
+            // Générer le reste des spawns avec possibilité de spawns simultanés
+            for (int i = 1; i < nombreClients; i++)
+            {
+                int tempsMin = (int)(tempsTotalSecondes * 0.05);
+                int tempsMax = tempsTotalSecondes - 3;
+                int temps = random.Next(tempsMin, tempsMax);
+
+                // Possibilité de spawns simultanés (30% de chance)
+                // Sinon minimum 3-5 secondes d'écart
+                bool spawnSimultane = random.Next(100) < 30;
+
+                if (!spawnSimultane)
+                {
+                    while (tempsSpawns.Any(t => Math.Abs(t - temps) < random.Next(3, 6)))
+                    {
+                        temps = random.Next(tempsMin, tempsMax);
+                    }
+                }
+
+                tempsSpawns.Add(temps);
+            }
+
+            // Trier les temps de spawn par ordre décroissant
+            tempsSpawns.Sort((a, b) => b.CompareTo(a));
+
+            // Créer les spawns avec des clients aléatoires
+            foreach (int temps in tempsSpawns)
+            {
+                var clientChoisi = clientsDisponibles[random.Next(clientsDisponibles.Count)];
+
+                listeSpawns.Add(new ClientSpawn
+                {
+                    TempsSpawn = temps,
+                    ImageClient = clientChoisi.client,
+                    ImageCommande = clientChoisi.commande
+                });
+            }
         }
 
         // AJOUT : Méthode pour mettre à jour l'affichage du score
@@ -94,22 +174,17 @@ namespace Crepe_Simulator
             tempsRestant = tempsRestant.Subtract(TimeSpan.FromSeconds(1));
             label_timer.Text = tempsRestant.ToString(@"mm\:ss");
 
-            if ((int)tempsRestant.TotalSeconds == 50)
-            {
-                imgClient2.Visibility = Visibility.Visible;
-                imgcmd1.Visibility = Visibility.Visible;
-            }
+            int secondesRestantes = (int)tempsRestant.TotalSeconds;
 
-            if ((int)tempsRestant.TotalSeconds == 40)
+            // Vérifier tous les spawns prévus
+            foreach (var spawn in listeSpawns.Where(s => !s.Spawned))
             {
-                imgClient3.Visibility = Visibility.Visible;
-                imgcmd2.Visibility = Visibility.Visible;
-            }
-
-            if ((int)tempsRestant.TotalSeconds == 30)
-            {
-                imgClient4.Visibility = Visibility.Visible;
-                imgcmd3.Visibility = Visibility.Visible;
+                if (secondesRestantes == spawn.TempsSpawn)
+                {
+                    spawn.ImageClient.Visibility = Visibility.Visible;
+                    spawn.ImageCommande.Visibility = Visibility.Visible;
+                    spawn.Spawned = true;
+                }
             }
 
             if (tempsRestant.TotalSeconds <= 0)
@@ -261,6 +336,9 @@ namespace Crepe_Simulator
                     Score += PRIX_CREPE;
                     MettreAJourAffichageScore();
                     MettreAJourBoutonAmelioration(); // Mettre à jour le bouton d'amélioration
+
+                    // IMPORTANT : Réinitialiser l'image de la crêpe à la crêpe de base
+                    imgCrepe2.Source = new BitmapImage(new Uri("/Images/crepe_realiste.png", UriKind.Relative));
                 }
                 else
                 {
