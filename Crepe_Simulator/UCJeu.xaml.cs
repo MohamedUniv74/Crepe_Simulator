@@ -135,43 +135,61 @@ namespace Crepe_Simulator
         }
 
         // NOUVELLE MÉTHODE - Bouton Vendre
-        private void bouton_vendre_Click(object sender, RoutedEventArgs e)
+        private async void bouton_vendre_Click(object sender, RoutedEventArgs e)
         {
             if (imgCrepe2.Visibility == Visibility.Visible)
             {
                 // Récupérer le nom de l'image de la crêpe
                 string crepeActuelle = imgCrepe2.Source.ToString();
 
-                // Faire disparaître la crêpe
-                imgCrepe2.Visibility = Visibility.Hidden;
-                imgCrepe2.Source = new BitmapImage(new Uri("/images/crepe_realiste.png", UriKind.Relative));
+                bool crêpeTrouvée = false; // Booléen pour savoir si une crêpe correspond
 
                 // Vérifier quelle crêpe correspond et faire disparaître le client
-                if (crepeActuelle.Contains("crepe_nutella"))
+                if (crepeActuelle.Contains("crepe_nutella") && imgClient2.Visibility == Visibility.Visible)
                 {
                     imgClient2.Visibility = Visibility.Hidden;
                     imgcmd1.Visibility = Visibility.Hidden;
+                    imgCrepe2.Visibility = Visibility.Hidden;
+                    crêpeTrouvée = true;
                 }
-                else if (crepeActuelle.Contains("crepe_caramele"))
+                else if (crepeActuelle.Contains("crepe_caramele") && imgClient3.Visibility == Visibility.Visible)
                 {
                     imgClient3.Visibility = Visibility.Hidden;
                     imgcmd2.Visibility = Visibility.Hidden;
+                    imgCrepe2.Visibility = Visibility.Hidden;
+                    crêpeTrouvée = true;
                 }
-                else if (crepeActuelle.Contains("crepe_chevremiel"))
+                else if (crepeActuelle.Contains("crepe_chevremiel") && imgClient4.Visibility == Visibility.Visible)
                 {
                     imgClient4.Visibility = Visibility.Hidden;
                     imgcmd3.Visibility = Visibility.Hidden;
+                    imgCrepe2.Visibility = Visibility.Hidden;
+                    crêpeTrouvée = true;
                 }
-                else if (crepeActuelle.Contains("crepe_confitture"))
+                else if (crepeActuelle.Contains("crepe_confitture") && imgClient5.Visibility == Visibility.Visible)
                 {
                     imgClient5.Visibility = Visibility.Hidden;
                     imgcmd4.Visibility = Visibility.Hidden;
+                    imgCrepe2.Visibility = Visibility.Hidden;
+                    crêpeTrouvée = true;
                 }
-                else if (crepeActuelle.Contains("crepe_sucre"))
+                else if (crepeActuelle.Contains("crepe_sucre") && imgClient6.Visibility == Visibility.Visible)
                 {
                     imgClient6.Visibility = Visibility.Hidden;
                     imgcmd5.Visibility = Visibility.Hidden;
+                    imgCrepe2.Visibility = Visibility.Hidden;
+                    crêpeTrouvée = true;
                 }
+
+                // Si aucune crêpe ne correspond, afficher le message
+                if (!crêpeTrouvée)
+                {
+                    labelMessageErreurVente.Visibility = Visibility.Visible; // Afficher le label
+                    await Task.Delay(3000);
+                    labelMessageErreurVente.Visibility = Visibility.Hidden; // Cacher le label si une crêpe a été trouvée
+                }
+                
+
             }
         }
 
