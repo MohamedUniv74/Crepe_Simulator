@@ -36,6 +36,9 @@ namespace Crepe_Simulator
         private Random random = new Random();
         private List<ClientSpawn> listeSpawns = new List<ClientSpawn>();
 
+        // AJOUT : Son de cuisson
+        private SoundPlayer sonCuisson;
+
         // Classe pour stocker les informations de spawn
         private class ClientSpawn
         {
@@ -62,6 +65,25 @@ namespace Crepe_Simulator
             timerPreparation = new DispatcherTimer();
             timerPreparation.Interval = TimeSpan.FromSeconds(1);
             timerPreparation.Tick += Timer_Preparation;
+
+            // AJOUT : Initialiser le son de cuisson
+            InitialiserSonCuisson();
+        }
+
+        // AJOUT : Méthode pour initialiser le son de cuisson
+        private void InitialiserSonCuisson()
+        {
+            try
+            {
+                sonCuisson = new SoundPlayer(Application.GetResourceStream(
+                    new Uri("pack://application:,,,/sons/son_cuisson.wav")).Stream);
+                sonCuisson.Load(); // Précharger le son
+            }
+            catch (Exception ex)
+            {
+                // Si le fichier son n'existe pas, on continue sans son
+                System.Diagnostics.Debug.WriteLine("Erreur chargement son cuisson: " + ex.Message);
+            }
         }
 
         // AJOUT : Méthode pour générer plusieurs spawns aléatoires
@@ -229,6 +251,12 @@ namespace Crepe_Simulator
                 tempsRestantPreparation = tempsCuissonActuel;
                 txtTimer.Text = $"Temps de préparation : {tempsRestantPreparation}s";
                 timerPreparation.Start();
+
+                // AJOUT : Jouer le son de cuisson EN BOUCLE
+                if (sonCuisson != null)
+                {
+                    sonCuisson.PlayLooping(); // Joue en boucle pendant la cuisson
+                }
             }
             else
             {
@@ -263,12 +291,19 @@ namespace Crepe_Simulator
                     Canvas.SetTop(imgPoele, 276);
                     PoeleRotation.Angle = 0;
 
+                    // AJOUT : Arrêter le son car la poêle quitte la plaque
+                    if (sonCuisson != null)
+                    {
+                        sonCuisson.Stop();
+                    }
+
                     txtTimer.Text = "";
                 }
                 else
                 {
                     // L'assiette est occupée, la crêpe cuite reste dans la poêle
-                    // LA POÊLE RESTE INCLINÉE ET NE BOUGE PAS
+                    // LA POÊLE RESTE INCLINÉE SUR LA PLAQUE
+                    // LE SON CONTINUE DE JOUER car la poêle est toujours sur la plaque
                     // On garde imgCrepe1 visible pour pouvoir la garnir
                     txtTimer.Text = "Assiette occupée ! Vendez d'abord.";
                 }
@@ -370,6 +405,12 @@ namespace Crepe_Simulator
                         Canvas.SetLeft(imgPoele, 312);
                         Canvas.SetTop(imgPoele, 276);
                         PoeleRotation.Angle = 0;
+
+                        // AJOUT : Arrêter le son car la poêle quitte la plaque
+                        if (sonCuisson != null)
+                        {
+                            sonCuisson.Stop();
+                        }
 
                         // Effacer le message d'assiette occupée
                         txtTimer.Text = "";
