@@ -121,6 +121,15 @@
                 <!-- Message erreur crepe déja présente-->
                 <Label x:Name="labelMessageErreurVente" Canvas.Left="346" Canvas.Top="250" Width="275" FontSize="16" FontWeight="Bold" Content="Aucun client ne veut cette crêpe !" Foreground="#FFC80000" Visibility="Hidden"/>
 
+                <!-- Message de confirmation d'achat d'amélioration -->
+                <Label x:Name="labelMessageConfirmation" 
+                       Canvas.Left="290" Canvas.Top="220" 
+                       Width="220" Height="30"
+                       FontSize="14" FontWeight="Bold" 
+                       Content="Amélioration achetée !" 
+                       Foreground="#FF27C93F" 
+                       HorizontalContentAlignment="Center"
+                       Visibility="Hidden"/>
 
                 <!-- Poêle -->
                 <Image x:Name="imgPoele" Canvas.Left="312" Canvas.Top="276" Width="68" Height="120" Source="/images/poele.png" Stretch="Fill" Panel.ZIndex="1">
@@ -154,6 +163,29 @@
                 <!-- Assiette -->
                 <Image Canvas.Left="566" Canvas.Top="287" Width="93" Height="96" 
                        Source="/images/Assiette.png" Stretch="Fill"/>
+
+                <!-- Bouton Améliorer la cuisson -->
+                <Button x:Name="bouton_ameliorer" 
+                        Canvas.Left="270" Canvas.Top="393" 
+                        Height="40" Width="140" 
+                        FontSize="9" FontWeight="Bold" 
+                        Foreground="White"
+                        Background="#FFFF8C00"
+                        Click="bouton_ameliorer_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" 
+                                    BorderBrush="#FFFF4500" 
+                                    BorderThickness="2" 
+                                    CornerRadius="6">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="Black" BlurRadius="4" ShadowDepth="2" Opacity="0.6"/>
+                                </Border.Effect>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
 
                 <!-- Buton Préparation-->
                 <Button x:Name="bouton_preparer" Content="Préparer" FontWeight="Bold" Background="#FFFFBB27" Canvas.Left="430" Canvas.Top="393" Height="20" Width="102" HorizontalAlignment="Center" VerticalAlignment="Center" Click="bouton_preparer_Click">
@@ -265,7 +297,7 @@
 
                 <Image x:Name="imgClient4" Source="/images/clients/client4.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="500" Canvas.Top="55"/>
                 <Image x:Name="imgcmd3" Source="/images/commandes/cmd_cmiel.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="560" Canvas.Top="15"/>
-                
+
                 <Image x:Name="imgClient5" Source="/images/clients/client5.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="200" Canvas.Top="55"/>
                 <Image x:Name="imgcmd4" Source="/images/commandes/cmd_confitture.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="160" Canvas.Top="15"/>
 

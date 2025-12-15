@@ -25,14 +25,20 @@ namespace Crepe_Simulator
         public static int Score { get; set; } = 0;
         private const int PRIX_CREPE = 5; // Prix par crêpe vendue
 
+        // AJOUT : Système d'amélioration
+        private int tempsCuissonActuel = 10; // Temps de cuisson actuel
+        private const int COUT_AMELIORATION = 50; // Coût de l'amélioration
+        private const int REDUCTION_TEMPS = 2; // Réduction de temps par amélioration
+
         public UCJeu()
         {
             InitializeComponent();
             InitialiserTimer();
 
-            // Initialiser le score à 0 au début du jeu
-            Score = 0;
+            /*Initialiser le score à 100 au début du jeu pour essayer le système d'amélioration
+            Score = 100;
             MettreAJourAffichageScore();
+            MettreAJourBoutonAmelioration();*/
 
             timerPreparation = new DispatcherTimer();
             timerPreparation.Interval = TimeSpan.FromSeconds(1);
@@ -43,6 +49,22 @@ namespace Crepe_Simulator
         private void MettreAJourAffichageScore()
         {
             label_argent.Text = $"{Score}€";
+        }
+
+        // AJOUT : Méthode pour mettre à jour le bouton d'amélioration
+        private void MettreAJourBoutonAmelioration()
+        {
+            if (bouton_ameliorer != null)
+            {
+                int tempsApresAmelioration = tempsCuissonActuel - REDUCTION_TEMPS;
+                bouton_ameliorer.Content = $"⚡ Améliorer ({COUT_AMELIORATION}€)\nTemps: {tempsApresAmelioration}s";
+
+                // Désactiver le bouton si pas assez d'argent ou temps minimum atteint
+                bouton_ameliorer.IsEnabled = Score >= COUT_AMELIORATION && tempsCuissonActuel > 2;
+
+                // Changer l'opacité si désactivé
+                bouton_ameliorer.Opacity = (Score >= COUT_AMELIORATION && tempsCuissonActuel > 2) ? 1.0 : 0.5;
+            }
         }
 
         private void InitialiserTimer()
@@ -119,7 +141,8 @@ namespace Crepe_Simulator
 
                 imgCrepe1.Visibility = Visibility.Visible;
 
-                tempsRestantPreparation = 10;
+                // MODIFIÉ : Utiliser le temps de cuisson actuel
+                tempsRestantPreparation = tempsCuissonActuel;
                 txtTimer.Text = $"Temps de préparation : {tempsRestantPreparation}s";
                 timerPreparation.Start();
             }
@@ -148,6 +171,32 @@ namespace Crepe_Simulator
                 PoeleRotation.Angle = 0;
 
                 txtTimer.Text = "";
+            }
+        }
+
+        // NOUVEAU : Bouton Améliorer
+        private async void bouton_ameliorer_Click(object sender, RoutedEventArgs e)
+        {
+            if (Score >= COUT_AMELIORATION && tempsCuissonActuel > 2)
+            {
+                // Déduire le coût
+                Score -= COUT_AMELIORATION;
+
+                // Réduire le temps de cuisson
+                tempsCuissonActuel -= REDUCTION_TEMPS;
+
+                // Mettre à jour l'affichage
+                MettreAJourAffichageScore();
+                MettreAJourBoutonAmelioration();
+
+                // Afficher un message de confirmation
+                if (labelMessageConfirmation != null)
+                {
+                    labelMessageConfirmation.Content = $"Amélioration achetée ! Temps: {tempsCuissonActuel}s";
+                    labelMessageConfirmation.Visibility = Visibility.Visible;
+                    await Task.Delay(2000);
+                    labelMessageConfirmation.Visibility = Visibility.Hidden;
+                }
             }
         }
 
@@ -203,6 +252,7 @@ namespace Crepe_Simulator
                 {
                     Score += PRIX_CREPE;
                     MettreAJourAffichageScore();
+                    MettreAJourBoutonAmelioration(); // Mettre à jour le bouton d'amélioration
                 }
                 else
                 {
