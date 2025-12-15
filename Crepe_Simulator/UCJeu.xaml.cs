@@ -36,8 +36,9 @@ namespace Crepe_Simulator
         private Random random = new Random();
         private List<ClientSpawn> listeSpawns = new List<ClientSpawn>();
 
-        // AJOUT : Son de cuisson
+        // AJOUT : Sons
         private SoundPlayer sonCuisson;
+        private MediaPlayer musiqueJeu;
 
         // Classe pour stocker les informations de spawn
         private class ClientSpawn
@@ -66,8 +67,9 @@ namespace Crepe_Simulator
             timerPreparation.Interval = TimeSpan.FromSeconds(1);
             timerPreparation.Tick += Timer_Preparation;
 
-            // AJOUT : Initialiser le son de cuisson
+            // AJOUT : Initialiser les sons
             InitialiserSonCuisson();
+            InitialiserMusiqueJeu();
         }
 
         // AJOUT : Méthode pour initialiser le son de cuisson
@@ -83,6 +85,34 @@ namespace Crepe_Simulator
             {
                 // Si le fichier son n'existe pas, on continue sans son
                 System.Diagnostics.Debug.WriteLine("Erreur chargement son cuisson: " + ex.Message);
+            }
+        }
+
+        // AJOUT : Méthode pour initialiser la musique de fond du jeu
+        private void InitialiserMusiqueJeu()
+        {
+            try
+            {
+                musiqueJeu = new MediaPlayer();
+                musiqueJeu.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + "sons/son_jeu.mp3"));
+                musiqueJeu.MediaEnded += RelancerMusiqueJeu;
+                musiqueJeu.Volume = 0.3; // Volume modéré pour ne pas couvrir les autres sons
+                musiqueJeu.Play();
+            }
+            catch (Exception ex)
+            {
+                // Si le fichier musique n'existe pas, on continue sans musique
+                System.Diagnostics.Debug.WriteLine("Erreur chargement musique jeu: " + ex.Message);
+            }
+        }
+
+        // AJOUT : Méthode pour relancer la musique en boucle
+        private void RelancerMusiqueJeu(object sender, EventArgs e)
+        {
+            if (musiqueJeu != null)
+            {
+                musiqueJeu.Position = TimeSpan.Zero;
+                musiqueJeu.Play();
             }
         }
 
@@ -214,6 +244,12 @@ namespace Crepe_Simulator
                 timer.Stop();
                 label_timer.Text = "00:00";
 
+                // AJOUT : Arrêter la musique de fond quand le jeu se termine
+                if (musiqueJeu != null)
+                {
+                    musiqueJeu.Stop();
+                }
+
                 Window mainWindow = Window.GetWindow(this);
                 if (mainWindow != null && mainWindow.Content is Grid grid)
                 {
@@ -229,6 +265,13 @@ namespace Crepe_Simulator
             {
                 timer.Stop();
             }
+
+            // AJOUT : Arrêter la musique en quittant
+            if (musiqueJeu != null)
+            {
+                musiqueJeu.Stop();
+            }
+
             Application.Current.Shutdown();
         }
 
