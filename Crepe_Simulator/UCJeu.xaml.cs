@@ -216,7 +216,7 @@ namespace Crepe_Simulator
                             spawn.BorderJauge.Visibility = Visibility.Hidden;
 
                         // Appliquer le malus UNE SEULE FOIS
-                        Score -= MALUS_CLIENT_PARTI;
+                        Score = Score - MALUS_CLIENT_PARTI;
                         MettreAJourAffichageScore();
                         MettreAJourBoutonAmelioration();
 
