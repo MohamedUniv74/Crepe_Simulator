@@ -47,6 +47,7 @@ namespace Crepe_Simulator
         // Sons
         private SoundPlayer sonCuisson;
         private MediaPlayer musiqueJeu;
+        private MediaPlayer sonVente;
 
         // Classe pour stocker les informations de spawn
         private class ClientSpawn
@@ -95,6 +96,7 @@ namespace Crepe_Simulator
             // Initialiser les sons
             InitialiserSonCuisson();
             InitialiserMusiqueJeu();
+            InitialiserSonVente();
         }
 
         // Méthode pour initialiser le son de cuisson
@@ -138,6 +140,22 @@ namespace Crepe_Simulator
             {
                 musiqueJeu.Position = TimeSpan.Zero;
                 musiqueJeu.Play();
+            }
+        }
+
+        // Méthode pour initialiser le son de vente
+        private void InitialiserSonVente()
+        {
+            try
+            {
+                sonVente = new MediaPlayer();
+                sonVente.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + "sons/vente_son.wav"));
+                sonVente.Volume = 0.5; // Volume modéré
+            }
+            catch (Exception ex)
+            {
+                // Si le fichier son n'existe pas, on continue sans son
+                System.Diagnostics.Debug.WriteLine("Erreur chargement son vente: " + ex.Message);
             }
         }
 
@@ -405,6 +423,10 @@ namespace Crepe_Simulator
             if (musiqueJeu != null)
             {
                 musiqueJeu.Stop();
+            }
+            if (sonVente != null)
+            {
+                sonVente.Stop();
             }
 
             Application.Current.Shutdown();

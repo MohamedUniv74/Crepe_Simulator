@@ -45,6 +45,7 @@
     <None Remove="images\poubelle.png" />
     <None Remove="images\sucre.png" />
     <None Remove="sons\son_cuisson.wav" />
+    <None Remove="sons\vente_son.wav" />
     <None Remove="UCDemarrage.xaml.cs~RF2d05f217.TMP" />
   </ItemGroup>
 
@@ -83,6 +84,7 @@
     <Resource Include="images\poubelle.png" />
     <Resource Include="images\sucre.png" />
     <Resource Include="sons\son_cuisson.wav" />
+    <Resource Include="sons\vente_son.wav" />
   </ItemGroup>
 
   <ItemGroup>
@@ -93,6 +95,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="sons\son_jeu.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="sons\vente_son.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
