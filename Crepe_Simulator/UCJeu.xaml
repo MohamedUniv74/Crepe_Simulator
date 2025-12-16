@@ -285,22 +285,50 @@
                     </Button.Template>
                 </Button>
 
-
+                <!-- CLIENT 1 (Nutella) -->
                 <Image x:Name="imgClient2" Source="/images/clients/client2.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="100" Canvas.Top="55"/>
                 <Image x:Name="imgcmd1" Source="/images/commandes/cmd_nutella.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="160" Canvas.Top="15"/>
+                <!-- Jauge Client 1 -->
+                <Border x:Name="borderJauge1" Canvas.Left="85" Canvas.Top="60" Width="10" Height="100" 
+                        Background="#AA000000" BorderBrush="#FF333333" BorderThickness="1" CornerRadius="5" Visibility="Hidden">
+                    <Rectangle x:Name="rectJauge1" Fill="#FF27C93F" VerticalAlignment="Bottom" Height="100"/>
+                </Border>
 
+                <!-- CLIENT 2 (Caramel) -->
                 <Image x:Name="imgClient3" Source="/images/clients/client3.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="300" Canvas.Top="55"/>
                 <Image x:Name="imgcmd2" Source="/images/commandes/cmd_caramel.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="370" Canvas.Top="15"/>
+                <!-- Jauge Client 2 -->
+                <Border x:Name="borderJauge2" Canvas.Left="285" Canvas.Top="60" Width="10" Height="100" 
+                        Background="#AA000000" BorderBrush="#FF333333" BorderThickness="1" CornerRadius="5" Visibility="Hidden">
+                    <Rectangle x:Name="rectJauge2" Fill="#FF27C93F" VerticalAlignment="Bottom" Height="100"/>
+                </Border>
 
+                <!-- CLIENT 3 (Chèvre-Miel) -->
                 <Image x:Name="imgClient4" Source="/images/clients/client4.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="500" Canvas.Top="55"/>
                 <Image x:Name="imgcmd3" Source="/images/commandes/cmd_cmiel.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="560" Canvas.Top="15"/>
+                <!-- Jauge Client 3 -->
+                <Border x:Name="borderJauge3" Canvas.Left="485" Canvas.Top="60" Width="10" Height="100" 
+                        Background="#AA000000" BorderBrush="#FF333333" BorderThickness="1" CornerRadius="5" Visibility="Hidden">
+                    <Rectangle x:Name="rectJauge3" Fill="#FF27C93F" VerticalAlignment="Bottom" Height="100"/>
+                </Border>
 
+                <!-- CLIENT 4 (Confiture) -->
                 <Image x:Name="imgClient5" Source="/images/clients/client5.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="200" Canvas.Top="55"/>
                 <Image x:Name="imgcmd4" Source="/images/commandes/cmd_confitture.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="160" Canvas.Top="15"/>
+                <!-- Jauge Client 4 -->
+                <Border x:Name="borderJauge4" Canvas.Left="185" Canvas.Top="60" Width="10" Height="100" 
+                        Background="#AA000000" BorderBrush="#FF333333" BorderThickness="1" CornerRadius="5" Visibility="Hidden">
+                    <Rectangle x:Name="rectJauge4" Fill="#FF27C93F" VerticalAlignment="Bottom" Height="100"/>
+                </Border>
 
-
-                <Image x:Name="imgClient6" Source="/images/clients/client5.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="200" Canvas.Top="55"/>
-                <Image x:Name="imgcmd5" Source="/images/commandes/cmd_sucre.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="160" Canvas.Top="15"/>
+                <!-- CLIENT 5 (Sucre) -->
+                <Image x:Name="imgClient6" Source="/images/clients/client5.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="400" Canvas.Top="55"/>
+                <Image x:Name="imgcmd5" Source="/images/commandes/cmd_sucre.png" Visibility="Hidden" Width="120" Height="160" Canvas.Left="460" Canvas.Top="15"/>
+                <!-- Jauge Client 5 -->
+                <Border x:Name="borderJauge5" Canvas.Left="385" Canvas.Top="60" Width="10" Height="100" 
+                        Background="#AA000000" BorderBrush="#FF333333" BorderThickness="1" CornerRadius="5" Visibility="Hidden">
+                    <Rectangle x:Name="rectJauge5" Fill="#FF27C93F" VerticalAlignment="Bottom" Height="100"/>
+                </Border>
 
                 <!-- Bouton Vendre -->
                 <Button x:Name="bouton_vendre" Content="Vendre" FontWeight="Bold" Background="#FF27BB5A" Canvas.Left="566" Canvas.Top="393" Height="20" Width="93" HorizontalAlignment="Center" VerticalAlignment="Center" Click="bouton_vendre_Click">

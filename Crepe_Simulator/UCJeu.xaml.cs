@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace Crepe_Simulator
@@ -23,9 +24,16 @@ namespace Crepe_Simulator
         DispatcherTimer timerPreparation;
         int tempsRestantPreparation = 10;
 
+        // Timer pour les jauges des clients
+        private DispatcherTimer timerJauges;
+
+        // Verrouillage pour éviter les malus multiples simultanés
+        private bool traitementMalusEnCours = false;
+
         // Variable pour le score
         public static int Score { get; set; } = 0;
         private const int PRIX_CREPE = 5; // Prix par crêpe vendue
+        private const int MALUS_CLIENT_PARTI = 2; // Malus quand un client part sans être servi
 
         // Système d'amélioration
         private int tempsCuissonActuel = 10; // Temps de cuisson actuel
@@ -46,7 +54,13 @@ namespace Crepe_Simulator
             public int TempsSpawn { get; set; }
             public Image ImageClient { get; set; }
             public Image ImageCommande { get; set; }
+            public Border BorderJauge { get; set; }
+            public Rectangle RectJauge { get; set; }
             public bool Spawned { get; set; } = false;
+            public int TempsPatience { get; set; } = 30; // Temps de patience initial (en secondes)
+            public int TempsRestantPatience { get; set; } // Temps restant
+            public bool MalusApplique { get; set; } = false; // Pour éviter d'appliquer le malus plusieurs fois
+            public bool ClientServi { get; set; } = false; // Pour savoir si le client a été servi
         }
 
         // Liste des clients et leurs commandes pour simplifier la vente
@@ -60,13 +74,14 @@ namespace Crepe_Simulator
             clientsEtCommandes.Add(("nutella", imgClient2, imgcmd1));
             clientsEtCommandes.Add(("caramele", imgClient3, imgcmd2));
             clientsEtCommandes.Add(("chevremiel", imgClient4, imgcmd3));
-            clientsEtCommandes.Add(("confitture", imgClient5, imgcmd4));
-            clientsEtCommandes.Add(("sucre", imgClient6, imgcmd5));
 
             // IMPORTANT : Générer les temps de spawn AVANT d'initialiser le timer
             GenererSpawnsAleatoires();
 
             InitialiserTimer();
+
+            // Initialiser le timer des jauges
+            InitialiserTimerJauges();
 
             // Initialisation du score à 0
             Score = 0;
@@ -126,6 +141,82 @@ namespace Crepe_Simulator
             }
         }
 
+        // Méthode pour initialiser le timer des jauges
+        private void InitialiserTimerJauges()
+        {
+            timerJauges = new DispatcherTimer();
+            timerJauges.Interval = TimeSpan.FromSeconds(1);
+            timerJauges.Tick += TimerJauges_Tick;
+            timerJauges.Start();
+        }
+
+        // Méthode appelée à chaque seconde pour mettre à jour les jauges
+        private void TimerJauges_Tick(object sender, EventArgs e)
+        {
+            // CRITIQUE : Créer une copie de la liste pour éviter les modifications pendant l'itération
+            // Ne traiter que les spawns qui sont actifs ET qui n'ont pas encore eu leur malus appliqué
+            var spawnsActifs = listeSpawns.Where(s => s.Spawned && !s.MalusApplique && s.ImageClient != null && s.ImageClient.Visibility == Visibility.Visible).ToList();
+
+            foreach (var spawn in spawnsActifs)
+            {
+                try
+                {
+                    // Décrémenter le temps restant
+                    spawn.TempsRestantPatience--;
+
+                    // Calculer le pourcentage restant
+                    double pourcentage = (double)spawn.TempsRestantPatience / spawn.TempsPatience;
+
+                    // Mettre à jour la hauteur de la jauge
+                    if (spawn.RectJauge != null)
+                    {
+                        spawn.RectJauge.Height = Math.Max(0, 100 * pourcentage);
+
+                        // Changer la couleur selon le temps restant
+                        if (pourcentage > 0.5)
+                        {
+                            spawn.RectJauge.Fill = new SolidColorBrush(Color.FromRgb(39, 201, 63)); // Vert
+                        }
+                        else if (pourcentage > 0.25)
+                        {
+                            spawn.RectJauge.Fill = new SolidColorBrush(Color.FromRgb(255, 187, 5)); // Orange
+                        }
+                        else
+                        {
+                            spawn.RectJauge.Fill = new SolidColorBrush(Color.FromRgb(255, 57, 57)); // Rouge
+                        }
+                    }
+
+                    // Si le temps est écoulé ET que le malus n'a pas encore été appliqué
+                    if (spawn.TempsRestantPatience <= 0)
+                    {
+                        if (spawn.ImageClient != null)
+                            spawn.ImageClient.Visibility = Visibility.Hidden;
+                        if (spawn.ImageCommande != null)
+                            spawn.ImageCommande.Visibility = Visibility.Hidden;
+                        if (spawn.BorderJauge != null)
+                            spawn.BorderJauge.Visibility = Visibility.Hidden;
+
+                        // Appliquer le malus UNE SEULE FOIS
+                        Score -= MALUS_CLIENT_PARTI;
+                        MettreAJourAffichageScore();
+                        MettreAJourBoutonAmelioration();
+
+                        // Marquer que le malus a été appliqué
+                        spawn.MalusApplique = true;
+
+                        // Afficher un message de pénalité
+                        AfficherMessageMalus();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Log l'erreur mais continue le jeu
+                    System.Diagnostics.Debug.WriteLine($"Erreur mise à jour jauge: {ex.Message}");
+                }
+            }
+        }
+
         // Méthode pour générer plusieurs spawns aléatoires
         private void GenererSpawnsAleatoires()
         {
@@ -134,12 +225,12 @@ namespace Crepe_Simulator
             // Calculer le nombre de clients en fonction du temps (1 client toutes les 8-10 secondes)
             int nombreClients = Math.Max(5, tempsTotalSecondes / 8);
 
-            // Créer une liste de tous les clients disponibles
-            List<(Image client, Image commande)> clientsDisponibles = new List<(Image, Image)>
+            // Créer une liste de tous les clients disponibles avec leurs jauges
+            List<(Image client, Image commande, Border borderJauge, Rectangle rectJauge)> clientsDisponibles = new List<(Image, Image, Border, Rectangle)>
             {
-                (imgClient2, imgcmd1),
-                (imgClient3, imgcmd2),
-                (imgClient4, imgcmd3)
+                (imgClient2, imgcmd1, borderJauge1, rectJauge1),
+                (imgClient3, imgcmd2, borderJauge2, rectJauge2),
+                (imgClient4, imgcmd3, borderJauge3, rectJauge3)
             };
 
             // Générer des temps de spawn répartis sur toute la durée
@@ -148,23 +239,17 @@ namespace Crepe_Simulator
             // Premier client apparaît très rapidement (dans les 3-5 premières secondes)
             tempsSpawns.Add(tempsTotalSecondes - random.Next(3, 6));
 
-            // Générer le reste des spawns avec possibilité de spawns simultanés
+            // Générer le reste des spawns
             for (int i = 1; i < nombreClients; i++)
             {
                 int tempsMin = (int)(tempsTotalSecondes * 0.05);
                 int tempsMax = tempsTotalSecondes - 3;
                 int temps = random.Next(tempsMin, tempsMax);
 
-                // Possibilité de spawns simultanés (30% de chance)
-                // Sinon minimum 3-5 secondes d'écart
-                bool spawnSimultane = random.Next(100) < 30;
-
-                if (!spawnSimultane)
+                // Minimum 5 secondes d'écart entre chaque spawn
+                while (tempsSpawns.Any(t => Math.Abs(t - temps) < 5))
                 {
-                    while (tempsSpawns.Any(t => Math.Abs(t - temps) < random.Next(3, 6)))
-                    {
-                        temps = random.Next(tempsMin, tempsMax);
-                    }
+                    temps = random.Next(tempsMin, tempsMax);
                 }
 
                 tempsSpawns.Add(temps);
@@ -178,11 +263,20 @@ namespace Crepe_Simulator
             {
                 var clientChoisi = clientsDisponibles[random.Next(clientsDisponibles.Count)];
 
+                // Temps de patience aléatoire entre 20 et 40 secondes
+                int tempsPatience = random.Next(20, 41);
+
                 listeSpawns.Add(new ClientSpawn
                 {
                     TempsSpawn = temps,
                     ImageClient = clientChoisi.client,
-                    ImageCommande = clientChoisi.commande
+                    ImageCommande = clientChoisi.commande,
+                    BorderJauge = clientChoisi.borderJauge,
+                    RectJauge = clientChoisi.rectJauge,
+                    TempsPatience = tempsPatience,
+                    TempsRestantPatience = tempsPatience,
+                    MalusApplique = false,
+                    ClientServi = false
                 });
             }
         }
@@ -238,20 +332,47 @@ namespace Crepe_Simulator
 
             int secondesRestantes = (int)tempsRestant.TotalSeconds;
 
-            // Vérifier tous les spawns prévus
-            foreach (var spawn in listeSpawns.Where(s => !s.Spawned))
+            // CRITIQUE : Créer une copie pour éviter les problèmes
+            var spawnsAVerifier = listeSpawns.Where(s => !s.Spawned).ToList();
+
+            foreach (var spawn in spawnsAVerifier)
             {
                 if (secondesRestantes == spawn.TempsSpawn)
                 {
-                    spawn.ImageClient.Visibility = Visibility.Visible;
-                    spawn.ImageCommande.Visibility = Visibility.Visible;
-                    spawn.Spawned = true;
+                    try
+                    {
+                        // Vérifier que le client n'est pas déjà visible
+                        if (spawn.ImageClient != null && spawn.ImageClient.Visibility == Visibility.Hidden)
+                        {
+                            spawn.ImageClient.Visibility = Visibility.Visible;
+
+                            if (spawn.ImageCommande != null)
+                                spawn.ImageCommande.Visibility = Visibility.Visible;
+                            if (spawn.BorderJauge != null)
+                                spawn.BorderJauge.Visibility = Visibility.Visible;
+
+                            // Réinitialiser la jauge à 100%
+                            if (spawn.RectJauge != null)
+                            {
+                                spawn.RectJauge.Height = 100;
+                                spawn.RectJauge.Fill = new SolidColorBrush(Color.FromRgb(39, 201, 63)); // Vert
+                            }
+
+                            spawn.Spawned = true;
+                            spawn.MalusApplique = false; // Réinitialiser le flag
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Erreur spawn client: {ex.Message}");
+                    }
                 }
             }
 
             if (tempsRestant.TotalSeconds <= 0)
             {
                 timer.Stop();
+                timerJauges.Stop(); // Arrêter le timer des jauges
                 label_timer.Text = "00:00";
 
                 // Arrêter la musique de fond quand le jeu se termine
@@ -274,6 +395,10 @@ namespace Crepe_Simulator
             if (timer != null)
             {
                 timer.Stop();
+            }
+            if (timerJauges != null)
+            {
+                timerJauges.Stop();
             }
 
             // Arrêter la musique en quittant
@@ -395,9 +520,22 @@ namespace Crepe_Simulator
                 {
                     if (crepeActuelle.Contains(crepeType) && client.Visibility == Visibility.Visible)
                     {
+                        // IMPORTANT : Trouver le spawn correspondant AVANT de cacher le client
+                        var spawn = listeSpawns.FirstOrDefault(s => s.ImageClient == client && s.Spawned && !s.MalusApplique);
+
+                        // Cacher tous les éléments visuels
                         client.Visibility = Visibility.Hidden;
                         cmd.Visibility = Visibility.Hidden;
                         imgCrepe2.Visibility = Visibility.Hidden;
+
+                        // Cacher la jauge et empêcher le malus
+                        if (spawn != null)
+                        {
+                            if (spawn.BorderJauge != null)
+                                spawn.BorderJauge.Visibility = Visibility.Hidden;
+                            spawn.MalusApplique = true; // CRITIQUE : Empêcher le malus puisque le client a été servi
+                        }
+
                         crêpeTrouvée = true;
                         break; // Sortir de la boucle dès qu'une correspondance est trouvée
                     }
@@ -482,6 +620,30 @@ namespace Crepe_Simulator
         private void but_sucre(object sender, RoutedEventArgs e)
         {
             GarnirCrepe("/Images/crepes/crepe_sucre.png");
+        }
+
+        // Méthode pour afficher un message de malus
+        private async void AfficherMessageMalus()
+        {
+            try
+            {
+                if (labelMessageErreurVente != null)
+                {
+                    labelMessageErreurVente.Content = $"Client parti ! -{MALUS_CLIENT_PARTI}€";
+                    labelMessageErreurVente.Visibility = Visibility.Visible;
+                    await Task.Delay(2500);
+
+                    // Vérifier que le label existe toujours avant de le cacher
+                    if (labelMessageErreurVente != null)
+                    {
+                        labelMessageErreurVente.Visibility = Visibility.Hidden;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Erreur affichage message malus: {ex.Message}");
+            }
         }
     }
 }
