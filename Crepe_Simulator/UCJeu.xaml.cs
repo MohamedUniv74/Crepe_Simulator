@@ -301,14 +301,6 @@ namespace Crepe_Simulator
                     sonCuisson.PlayLooping(); // Joue en boucle pendant la cuisson
                 }
             }
-            else
-            {
-                // Une crêpe est déjà en train de cuire
-                labelMessageErreur.Content = "Une crêpe est déjà en cuisson !";
-                labelMessageErreur.Visibility = Visibility.Visible;
-                await Task.Delay(3000);
-                labelMessageErreur.Visibility = Visibility.Hidden;
-            }
         }
 
         private void Timer_Preparation(object sender, EventArgs e)

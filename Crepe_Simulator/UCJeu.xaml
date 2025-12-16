@@ -116,9 +116,6 @@
                 <TextBlock x:Name="txtTimer" Text="" FontSize="16" FontWeight="Bold" Canvas.Left="353" Canvas.Top="255" HorizontalAlignment="Left" VerticalAlignment="Center" Width="275"/>
 
                 <!-- Message erreur crepe déja présente-->
-                <Label x:Name="labelMessageErreur" Canvas.Left="346" Canvas.Top="250" Width="275" FontSize="16" FontWeight="Bold" Content="Vous devez déjà vendre la crêpe !" Foreground="#FFC80000" Visibility="Hidden"/>
-
-                <!-- Message erreur crepe déja présente-->
                 <Label x:Name="labelMessageErreurVente" Canvas.Left="346" Canvas.Top="250" Width="275" FontSize="16" FontWeight="Bold" Content="Aucun client ne veut cette crêpe !" Foreground="#FFC80000" Visibility="Hidden"/>
 
                 <!-- Message de confirmation d'achat d'amélioration -->
