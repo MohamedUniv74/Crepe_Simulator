@@ -34,7 +34,7 @@
 
                 <StackPanel Orientation="Horizontal" Margin="0,10">
                     <Ellipse Width="20" Height="20" Fill="#FFC18140" Stroke="Black"/>
-                    <TextBlock Text="   Gérez la cuisson pour ne pas la cramer"
+                    <TextBlock Text="   Ajoutez la garniture"
                                FontSize="24"
                                VerticalAlignment="Center"/>
                 </StackPanel>
@@ -49,14 +49,14 @@
 
                 <StackPanel Orientation="Horizontal" Margin="0,10">
                     <Ellipse Width="20" Height="20" Fill="#FFC18140" Stroke="Black"/>
-                    <TextBlock Text="   Ajoutez les garnitures"
+                    <TextBlock Text="   Servez les clients à temps"
                                FontSize="24"
                                VerticalAlignment="Center"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="0,10">
                     <Ellipse Width="20" Height="20" Fill="#FFC18140" Stroke="Black"/>
-                    <TextBlock Text="   Servez les clients à temps"
+                    <TextBlock Text="   Améliorez votre cuisinière pour diminuer le temps de cuisson"
                                FontSize="24"
                                VerticalAlignment="Center"/>
                 </StackPanel>
