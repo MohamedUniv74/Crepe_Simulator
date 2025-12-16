@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        
+
         <!-- Viewbox pour maintenir les proportions -->
         <Viewbox Stretch="Uniform">
             <Canvas Width="800" Height="450">
@@ -22,19 +22,20 @@
                     <Border.Effect>
                         <DropShadowEffect Color="#FFFFB105" BlurRadius="30" ShadowDepth="0" Opacity="0.8"/>
                     </Border.Effect>
+
                 </Border>
 
                 <!-- Titre "PARTIE TERMINÉE" -->
                 <TextBlock Canvas.Left="200" Canvas.Top="85"
                            Width="400" Height="60"
-                           Text="PARTIE TERMINÉE !"
+                           Text="Partie terminée !"
                            FontSize="32" FontWeight="Bold"
                            Foreground="#FF2C3E50"
                            TextAlignment="Center"
                            VerticalAlignment="Center" FontFamily="Monotype Corsiva"/>
 
                 <!-- Icône trophée -->
-                <Viewbox Canvas.Left="350" Canvas.Top="145" Width="100" Height="100">
+                <Viewbox x:Name="trophée" Canvas.Left="350" Canvas.Top="145" Width="100" Height="100" Visibility="Hidden">
                     <Canvas Width="100" Height="100">
                         <!-- Coupe du trophée -->
                         <Path Data="M30,40 L30,60 Q30,70 40,70 L60,70 Q70,70 70,60 L70,40 M25,40 L75,40 M50,70 L50,85 M35,85 L65,85" 
@@ -135,6 +136,7 @@
                     </Button.Template>
 
                 </Button>
+                <Label x:Name="perdu" Content="Tu as perdu !" Canvas.Left="293" Canvas.Top="166" FontSize="36" FontWeight="Bold" Background="{x:Null}" Foreground="Red" Visibility="Hidden"/>
 
 
             </Canvas>

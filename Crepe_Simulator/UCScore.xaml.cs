@@ -61,6 +61,15 @@ namespace Crepe_Simulator
             // Récupérer le score depuis UCJeu
             int scoreObtenu = UCJeu.Score;
 
+            if (scoreObtenu < 1)
+            {
+                perdu.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                trophée.Visibility = Visibility.Visible;
+            }
+
             // Afficher le score avec le symbole €
             label_score.Text = $"{scoreObtenu}€";
         }
