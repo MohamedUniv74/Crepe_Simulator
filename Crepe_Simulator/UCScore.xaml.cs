@@ -12,12 +12,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Media;
 
 namespace Crepe_Simulator
 {
     public partial class UCScore : UserControl
     {
-        private MediaPlayer mediaPlayer;
+        private SoundPlayer sonFin;
 
         public UCScore()
         {
@@ -38,36 +39,15 @@ namespace Crepe_Simulator
         {
             try
             {
-                // Créer une instance de MediaPlayer
-                mediaPlayer = new MediaPlayer();
+                // Créer une instance de SoundPlayer avec le fichier WAV
+                sonFin = new SoundPlayer(Application.GetResourceStream(
+                    new Uri("pack://application:,,,/sons/son-fin.wav")).Stream);
 
-                // Charger le fichier audio
-                string cheminSon = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "sons/son-fin.mp3");
+                // Précharger le son
+                sonFin.Load();
 
-                // Vérifier si le fichier existe
-                if (!System.IO.File.Exists(cheminSon))
-                {
-                    MessageBox.Show($"Fichier non trouvé : {cheminSon}");
-                    return;
-                }
-
-                // S'abonner à l'événement MediaOpened pour jouer quand c'est prêt
-                mediaPlayer.MediaOpened += (s, e) =>
-                {
-                    mediaPlayer.Play();
-                };
-
-                // Gérer les erreurs de média
-                mediaPlayer.MediaFailed += (s, e) =>
-                {
-                    MessageBox.Show($"Erreur média : {e.ErrorException.Message}");
-                };
-
-                // Ouvrir le fichier
-                mediaPlayer.Open(new Uri(cheminSon, UriKind.Absolute));
-
-                // Définir le volume (optionnel, 0.0 à 1.0)
-                mediaPlayer.Volume = 0.5;
+                // Jouer le son
+                sonFin.Play();
             }
             catch (Exception ex)
             {
@@ -88,10 +68,10 @@ namespace Crepe_Simulator
         private void Bouton_rejouer_Click(object sender, RoutedEventArgs e)
         {
             // Arrêter le son si nécessaire
-            if (mediaPlayer != null)
+            if (sonFin != null)
             {
-                mediaPlayer.Stop();
-                mediaPlayer.Close();
+                sonFin.Stop();
+                sonFin.Dispose();
             }
 
             // Récupérer la fenêtre principale
@@ -109,10 +89,10 @@ namespace Crepe_Simulator
         private void Bouton_menu_Click(object sender, RoutedEventArgs e)
         {
             // Arrêter le son si nécessaire
-            if (mediaPlayer != null)
+            if (sonFin != null)
             {
-                mediaPlayer.Stop();
-                mediaPlayer.Close();
+                sonFin.Stop();
+                sonFin.Dispose();
             }
 
             // Récupérer la fenêtre principale
