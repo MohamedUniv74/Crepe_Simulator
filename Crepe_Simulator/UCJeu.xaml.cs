@@ -29,7 +29,7 @@ namespace Crepe_Simulator
 
         // AJOUT : Système d'amélioration
         private int tempsCuissonActuel = 10; // Temps de cuisson actuel
-        private const int COUT_AMELIORATION = 50; // Coût de l'amélioration
+        private const int COUT_AMELIORATION = 15; // Coût de l'amélioration
         private const int REDUCTION_TEMPS = 2; // Réduction de temps par amélioration
 
         // AJOUT : Système de spawn régulier et aléatoire des clients
@@ -58,8 +58,8 @@ namespace Crepe_Simulator
 
             InitialiserTimer();
 
-            // Initialiser le score à 50 au début du jeu
-            Score = 50;
+            // Initialisation du score à 0
+            Score = 0;
             MettreAJourAffichageScore();
             MettreAJourBoutonAmelioration();
 
