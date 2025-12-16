@@ -233,10 +233,10 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Content="Sucre" Canvas.Left="127" Canvas.Top="386" Height="15" Width="28" 
+                <Button Content="Sucre" Canvas.Left="127" Canvas.Top="383" Height="15" Width="28" 
                         FontSize="7" FontWeight="Bold" Foreground="#FF333333"
                         Background="#FFEEEEEE" 
-                        Click="but_sucre">
+                        Click="but_sucre" HorizontalAlignment="Center" VerticalAlignment="Top">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" 
@@ -251,7 +251,7 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Content="Confitture" Canvas.Left="39" Canvas.Top="383" Height="15" Width="44" 
+                <Button Content="Confiture" Canvas.Left="39" Canvas.Top="383" Height="15" Width="44" 
                         FontSize="7" FontWeight="Bold" Foreground="White"
                         Background="#FFCC2244" 
                         Click="but_confutture" HorizontalAlignment="Left" VerticalAlignment="Center">
@@ -269,10 +269,10 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Content="C-Mile" Canvas.Left="211" Canvas.Top="362" Height="14" Width="28" 
+                <Button Content="Chèvre-Miel" Canvas.Left="200" Canvas.Top="362" Height="14" Width="49" 
                         FontSize="7" FontWeight="Bold" Foreground="#FF333333"
                         Background="#FFFFCC66" 
-                        Click="but_cmiel">
+                        Click="but_cmiel" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" 
