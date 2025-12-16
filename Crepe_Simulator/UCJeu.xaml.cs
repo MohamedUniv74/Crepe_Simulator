@@ -47,7 +47,7 @@ namespace Crepe_Simulator
         // Sons
         private SoundPlayer sonCuisson;
         private MediaPlayer musiqueJeu;
-        private MediaPlayer sonVente;
+        private SoundPlayer sonVente;
 
         // Classe pour stocker les informations de spawn
         private class ClientSpawn
@@ -148,9 +148,9 @@ namespace Crepe_Simulator
         {
             try
             {
-                sonVente = new MediaPlayer();
-                sonVente.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + "sons/vente_son.mp3"));
-                sonVente.Volume = 0.5; // Volume modéré
+                sonVente = new SoundPlayer(Application.GetResourceStream(
+                    new Uri("pack://application:,,,/sons/vente_son.wav")).Stream);
+                sonVente.Load(); // Précharger le son
             }
             catch (Exception ex)
             {
@@ -428,6 +428,10 @@ namespace Crepe_Simulator
             {
                 sonVente.Stop();
             }
+            if (sonCuisson != null)
+            {
+                sonCuisson.Stop();
+            }
 
             Application.Current.Shutdown();
         }
@@ -566,6 +570,12 @@ namespace Crepe_Simulator
                 // Si une crêpe a été vendue, augmenter le score
                 if (crêpeTrouvée)
                 {
+                    // Jouer le son de vente
+                    if (sonVente != null)
+                    {
+                        sonVente.Play();
+                    }
+
                     Score += PRIX_CREPE;
                     MettreAJourAffichageScore();
                     MettreAJourBoutonAmelioration(); // Mettre à jour le bouton d'amélioration
