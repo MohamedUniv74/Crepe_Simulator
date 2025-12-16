@@ -149,7 +149,7 @@ namespace Crepe_Simulator
             try
             {
                 sonVente = new MediaPlayer();
-                sonVente.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + "sons/vente_son.wav"));
+                sonVente.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + "sons/vente_son.mp3"));
                 sonVente.Volume = 0.5; // Volume modéré
             }
             catch (Exception ex)
