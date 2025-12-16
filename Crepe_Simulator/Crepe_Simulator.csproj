@@ -44,6 +44,7 @@
     <None Remove="images\poele.png" />
     <None Remove="images\poubelle.png" />
     <None Remove="images\sucre.png" />
+    <None Remove="sons\son-fin.wav" />
     <None Remove="sons\son_cuisson.wav" />
     <None Remove="sons\vente_son.wav" />
     <None Remove="UCDemarrage.xaml.cs~RF2d05f217.TMP" />
@@ -83,6 +84,7 @@
     <Resource Include="images\poele.png" />
     <Resource Include="images\poubelle.png" />
     <Resource Include="images\sucre.png" />
+    <Resource Include="sons\son-fin.wav" />
     <Resource Include="sons\son_cuisson.wav" />
     <Resource Include="sons\vente_son.wav" />
   </ItemGroup>
