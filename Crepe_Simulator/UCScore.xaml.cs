@@ -17,9 +17,14 @@ namespace Crepe_Simulator
 {
     public partial class UCScore : UserControl
     {
+        private MediaPlayer mediaPlayer;
+
         public UCScore()
         {
             InitializeComponent();
+
+            // Initialiser et jouer le son
+            JouerSonFin();
 
             // Afficher le score obtenu durant la partie
             AfficherScore();
@@ -27,6 +32,48 @@ namespace Crepe_Simulator
             // Ajouter les événements Click aux boutons
             bouton_rejouer.Click += Bouton_rejouer_Click;
             bouton_menu.Click += Bouton_menu_Click;
+        }
+
+        private void JouerSonFin()
+        {
+            try
+            {
+                // Créer une instance de MediaPlayer
+                mediaPlayer = new MediaPlayer();
+
+                // Charger le fichier audio
+                string cheminSon = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "sons/son-fin.mp3");
+
+                // Vérifier si le fichier existe
+                if (!System.IO.File.Exists(cheminSon))
+                {
+                    MessageBox.Show($"Fichier non trouvé : {cheminSon}");
+                    return;
+                }
+
+                // S'abonner à l'événement MediaOpened pour jouer quand c'est prêt
+                mediaPlayer.MediaOpened += (s, e) =>
+                {
+                    mediaPlayer.Play();
+                };
+
+                // Gérer les erreurs de média
+                mediaPlayer.MediaFailed += (s, e) =>
+                {
+                    MessageBox.Show($"Erreur média : {e.ErrorException.Message}");
+                };
+
+                // Ouvrir le fichier
+                mediaPlayer.Open(new Uri(cheminSon, UriKind.Absolute));
+
+                // Définir le volume (optionnel, 0.0 à 1.0)
+                mediaPlayer.Volume = 0.5;
+            }
+            catch (Exception ex)
+            {
+                // Gérer les erreurs (fichier non trouvé, etc.)
+                MessageBox.Show($"Erreur lors de la lecture du son : {ex.Message}");
+            }
         }
 
         private void AfficherScore()
@@ -40,6 +87,13 @@ namespace Crepe_Simulator
 
         private void Bouton_rejouer_Click(object sender, RoutedEventArgs e)
         {
+            // Arrêter le son si nécessaire
+            if (mediaPlayer != null)
+            {
+                mediaPlayer.Stop();
+                mediaPlayer.Close();
+            }
+
             // Récupérer la fenêtre principale
             Window mainWindow = Window.GetWindow(this);
             if (mainWindow != null && mainWindow.Content is Grid grid)
@@ -54,6 +108,13 @@ namespace Crepe_Simulator
 
         private void Bouton_menu_Click(object sender, RoutedEventArgs e)
         {
+            // Arrêter le son si nécessaire
+            if (mediaPlayer != null)
+            {
+                mediaPlayer.Stop();
+                mediaPlayer.Close();
+            }
+
             // Récupérer la fenêtre principale
             Window mainWindow = Window.GetWindow(this);
             if (mainWindow != null && mainWindow.Content is Grid grid)
