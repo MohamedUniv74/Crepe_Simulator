@@ -23,20 +23,20 @@ namespace Crepe_Simulator
         DispatcherTimer timerPreparation;
         int tempsRestantPreparation = 10;
 
-        // AJOUT : Variable pour le score
+        // Variable pour le score
         public static int Score { get; set; } = 0;
         private const int PRIX_CREPE = 5; // Prix par crêpe vendue
 
-        // AJOUT : Système d'amélioration
+        // Système d'amélioration
         private int tempsCuissonActuel = 10; // Temps de cuisson actuel
         private const int COUT_AMELIORATION = 15; // Coût de l'amélioration
         private const int REDUCTION_TEMPS = 2; // Réduction de temps par amélioration
 
-        // AJOUT : Système de spawn régulier et aléatoire des clients
+        // Système de spawn régulier et aléatoire des clients
         private Random random = new Random();
         private List<ClientSpawn> listeSpawns = new List<ClientSpawn>();
 
-        // AJOUT : Sons
+        // Sons
         private SoundPlayer sonCuisson;
         private MediaPlayer musiqueJeu;
 
@@ -49,9 +49,19 @@ namespace Crepe_Simulator
             public bool Spawned { get; set; } = false;
         }
 
+        // Liste des clients et leurs commandes pour simplifier la vente
+        private List<(string CrepeType, Image Client, Image Commande)> clientsEtCommandes = new List<(string, Image, Image)>();
+
         public UCJeu()
         {
             InitializeComponent();
+
+            // Initialiser la liste des clients et commandes
+            clientsEtCommandes.Add(("nutella", imgClient2, imgcmd1));
+            clientsEtCommandes.Add(("caramele", imgClient3, imgcmd2));
+            clientsEtCommandes.Add(("chevremiel", imgClient4, imgcmd3));
+            clientsEtCommandes.Add(("confitture", imgClient5, imgcmd4));
+            clientsEtCommandes.Add(("sucre", imgClient6, imgcmd5));
 
             // IMPORTANT : Générer les temps de spawn AVANT d'initialiser le timer
             GenererSpawnsAleatoires();
@@ -67,12 +77,12 @@ namespace Crepe_Simulator
             timerPreparation.Interval = TimeSpan.FromSeconds(1);
             timerPreparation.Tick += Timer_Preparation;
 
-            // AJOUT : Initialiser les sons
+            // Initialiser les sons
             InitialiserSonCuisson();
             InitialiserMusiqueJeu();
         }
 
-        // AJOUT : Méthode pour initialiser le son de cuisson
+        // Méthode pour initialiser le son de cuisson
         private void InitialiserSonCuisson()
         {
             try
@@ -88,7 +98,7 @@ namespace Crepe_Simulator
             }
         }
 
-        // AJOUT : Méthode pour initialiser la musique de fond du jeu
+        // Méthode pour initialiser la musique de fond du jeu
         private void InitialiserMusiqueJeu()
         {
             try
@@ -106,7 +116,7 @@ namespace Crepe_Simulator
             }
         }
 
-        // AJOUT : Méthode pour relancer la musique en boucle
+        // Méthode pour relancer la musique en boucle
         private void RelancerMusiqueJeu(object sender, EventArgs e)
         {
             if (musiqueJeu != null)
@@ -116,7 +126,7 @@ namespace Crepe_Simulator
             }
         }
 
-        // AJOUT : Méthode pour générer plusieurs spawns aléatoires
+        // Méthode pour générer plusieurs spawns aléatoires
         private void GenererSpawnsAleatoires()
         {
             int tempsTotalSecondes = UCTemps.TempsChoisi * 60;
@@ -177,13 +187,13 @@ namespace Crepe_Simulator
             }
         }
 
-        // AJOUT : Méthode pour mettre à jour l'affichage du score
+        // Méthode pour mettre à jour l'affichage du score
         private void MettreAJourAffichageScore()
         {
             label_argent.Text = $"{Score}€";
         }
 
-        // AJOUT : Méthode pour mettre à jour le bouton d'amélioration
+        // Méthode pour mettre à jour le bouton d'amélioration
         private void MettreAJourBoutonAmelioration()
         {
             if (bouton_ameliorer != null)
@@ -244,7 +254,7 @@ namespace Crepe_Simulator
                 timer.Stop();
                 label_timer.Text = "00:00";
 
-                // AJOUT : Arrêter la musique de fond quand le jeu se termine
+                // Arrêter la musique de fond quand le jeu se termine
                 if (musiqueJeu != null)
                 {
                     musiqueJeu.Stop();
@@ -266,7 +276,7 @@ namespace Crepe_Simulator
                 timer.Stop();
             }
 
-            // AJOUT : Arrêter la musique en quittant
+            // Arrêter la musique en quittant
             if (musiqueJeu != null)
             {
                 musiqueJeu.Stop();
@@ -277,7 +287,7 @@ namespace Crepe_Simulator
 
         private async void bouton_preparer_Click(object sender, RoutedEventArgs e)
         {
-            // MODIFIÉ : On ne peut préparer que si aucune crêpe n'est en train de cuire
+            // On ne peut préparer que si aucune crêpe n'est en train de cuire
             if (imgCrepe1.Visibility == Visibility.Hidden)
             {
                 double nouvellePositionX = 395;
@@ -290,12 +300,12 @@ namespace Crepe_Simulator
 
                 imgCrepe1.Visibility = Visibility.Visible;
 
-                // MODIFIÉ : Utiliser le temps de cuisson actuel
+                // Utiliser le temps de cuisson actuel
                 tempsRestantPreparation = tempsCuissonActuel;
                 txtTimer.Text = $"Temps de préparation : {tempsRestantPreparation}s";
                 timerPreparation.Start();
 
-                // AJOUT : Jouer le son de cuisson EN BOUCLE
+                // Jouer le son de cuisson EN BOUCLE
                 if (sonCuisson != null)
                 {
                     sonCuisson.PlayLooping(); // Joue en boucle pendant la cuisson
@@ -312,7 +322,7 @@ namespace Crepe_Simulator
             {
                 timerPreparation.Stop();
 
-                // MODIFIÉ : Vérifier si l'assiette est libre avant de mettre la crêpe
+                // Vérifier si l'assiette est libre avant de mettre la crêpe
                 if (imgCrepe2.Visibility == Visibility.Hidden)
                 {
                     // L'assiette est libre, on peut y mettre la crêpe
@@ -326,7 +336,7 @@ namespace Crepe_Simulator
                     Canvas.SetTop(imgPoele, 276);
                     PoeleRotation.Angle = 0;
 
-                    // AJOUT : Arrêter le son car la poêle quitte la plaque
+                    // Arrêter le son car la poêle quitte la plaque
                     if (sonCuisson != null)
                     {
                         sonCuisson.Stop();
@@ -345,7 +355,6 @@ namespace Crepe_Simulator
             }
         }
 
-        // NOUVEAU : Bouton Améliorer
         private async void bouton_ameliorer_Click(object sender, RoutedEventArgs e)
         {
             if (Score >= COUT_AMELIORATION && tempsCuissonActuel > 2)
@@ -371,7 +380,7 @@ namespace Crepe_Simulator
             }
         }
 
-        // MODIFIÉ : Bouton Vendre avec augmentation du score
+        // Bouton Vendre avec augmentation du score
         private async void bouton_vendre_Click(object sender, RoutedEventArgs e)
         {
             if (imgCrepe2.Visibility == Visibility.Visible)
@@ -381,44 +390,20 @@ namespace Crepe_Simulator
 
                 bool crêpeTrouvée = false; // Booléen pour savoir si une crêpe correspond
 
-                // Vérifier quelle crêpe correspond et faire disparaître le client
-                if (crepeActuelle.Contains("crepe_nutella") && imgClient2.Visibility == Visibility.Visible)
+                // Utiliser une boucle pour vérifier quelle crêpe correspond
+                foreach (var (crepeType, client, cmd) in clientsEtCommandes)
                 {
-                    imgClient2.Visibility = Visibility.Hidden;
-                    imgcmd1.Visibility = Visibility.Hidden;
-                    imgCrepe2.Visibility = Visibility.Hidden;
-                    crêpeTrouvée = true;
-                }
-                else if (crepeActuelle.Contains("crepe_caramele") && imgClient3.Visibility == Visibility.Visible)
-                {
-                    imgClient3.Visibility = Visibility.Hidden;
-                    imgcmd2.Visibility = Visibility.Hidden;
-                    imgCrepe2.Visibility = Visibility.Hidden;
-                    crêpeTrouvée = true;
-                }
-                else if (crepeActuelle.Contains("crepe_chevremiel") && imgClient4.Visibility == Visibility.Visible)
-                {
-                    imgClient4.Visibility = Visibility.Hidden;
-                    imgcmd3.Visibility = Visibility.Hidden;
-                    imgCrepe2.Visibility = Visibility.Hidden;
-                    crêpeTrouvée = true;
-                }
-                else if (crepeActuelle.Contains("crepe_confitture") && imgClient5.Visibility == Visibility.Visible)
-                {
-                    imgClient5.Visibility = Visibility.Hidden;
-                    imgcmd4.Visibility = Visibility.Hidden;
-                    imgCrepe2.Visibility = Visibility.Hidden;
-                    crêpeTrouvée = true;
-                }
-                else if (crepeActuelle.Contains("crepe_sucre") && imgClient6.Visibility == Visibility.Visible)
-                {
-                    imgClient6.Visibility = Visibility.Hidden;
-                    imgcmd5.Visibility = Visibility.Hidden;
-                    imgCrepe2.Visibility = Visibility.Hidden;
-                    crêpeTrouvée = true;
+                    if (crepeActuelle.Contains(crepeType) && client.Visibility == Visibility.Visible)
+                    {
+                        client.Visibility = Visibility.Hidden;
+                        cmd.Visibility = Visibility.Hidden;
+                        imgCrepe2.Visibility = Visibility.Hidden;
+                        crêpeTrouvée = true;
+                        break; // Sortir de la boucle dès qu'une correspondance est trouvée
+                    }
                 }
 
-                // AJOUT : Si une crêpe a été vendue, augmenter le score
+                // Si une crêpe a été vendue, augmenter le score
                 if (crêpeTrouvée)
                 {
                     Score += PRIX_CREPE;
@@ -441,7 +426,7 @@ namespace Crepe_Simulator
                         Canvas.SetTop(imgPoele, 276);
                         PoeleRotation.Angle = 0;
 
-                        // AJOUT : Arrêter le son car la poêle quitte la plaque
+                        // Arrêter le son car la poêle quitte la plaque
                         if (sonCuisson != null)
                         {
                             sonCuisson.Stop();
@@ -461,66 +446,42 @@ namespace Crepe_Simulator
             }
         }
 
-        private void but_nuttela(object sender, RoutedEventArgs e)
+        // Méthode commune pour garnir une crêpe
+        private void GarnirCrepe(string crepePath)
         {
-            // Peut garnir la crêpe sur l'assiette même si une autre cuit dans la poêle
             if (imgCrepe2.Visibility == Visibility.Visible)
             {
-                imgCrepe2.Source = new BitmapImage(new Uri("/Images/crepes/crepe_nutella.png", UriKind.Relative));
+                imgCrepe2.Source = new BitmapImage(new Uri(crepePath, UriKind.Relative));
             }
-            // Peut garnir la crêpe dans la poêle SI la cuisson est terminée
             else if (tempsRestantPreparation <= 0 && imgCrepe1.Visibility == Visibility.Visible)
             {
-                imgCrepe1.Source = new BitmapImage(new Uri("/Images/crepes/crepe_nutella.png", UriKind.Relative));
+                imgCrepe1.Source = new BitmapImage(new Uri(crepePath, UriKind.Relative));
             }
+        }
+
+        private void but_nuttela(object sender, RoutedEventArgs e)
+        {
+            GarnirCrepe("/Images/crepes/crepe_nutella.png");
         }
 
         private void but_caramel(object sender, RoutedEventArgs e)
         {
-            if (imgCrepe2.Visibility == Visibility.Visible)
-            {
-                imgCrepe2.Source = new BitmapImage(new Uri("/Images/crepes/crepe_caramele.png", UriKind.Relative));
-            }
-            else if (tempsRestantPreparation <= 0 && imgCrepe1.Visibility == Visibility.Visible)
-            {
-                imgCrepe1.Source = new BitmapImage(new Uri("/Images/crepes/crepe_caramele.png", UriKind.Relative));
-            }
+            GarnirCrepe("/Images/crepes/crepe_caramele.png");
         }
 
         private void but_confutture(object sender, RoutedEventArgs e)
         {
-            if (imgCrepe2.Visibility == Visibility.Visible)
-            {
-                imgCrepe2.Source = new BitmapImage(new Uri("/Images/crepes/crepe_confitture.png", UriKind.Relative));
-            }
-            else if (tempsRestantPreparation <= 0 && imgCrepe1.Visibility == Visibility.Visible)
-            {
-                imgCrepe1.Source = new BitmapImage(new Uri("/Images/crepes/crepe_confitture.png", UriKind.Relative));
-            }
+            GarnirCrepe("/Images/crepes/crepe_confitture.png");
         }
 
         private void but_cmiel(object sender, RoutedEventArgs e)
         {
-            if (imgCrepe2.Visibility == Visibility.Visible)
-            {
-                imgCrepe2.Source = new BitmapImage(new Uri("/Images/crepes/crepe_chevremiel.png", UriKind.Relative));
-            }
-            else if (tempsRestantPreparation <= 0 && imgCrepe1.Visibility == Visibility.Visible)
-            {
-                imgCrepe1.Source = new BitmapImage(new Uri("/Images/crepes/crepe_chevremiel.png", UriKind.Relative));
-            }
+            GarnirCrepe("/Images/crepes/crepe_chevremiel.png");
         }
 
         private void but_sucre(object sender, RoutedEventArgs e)
         {
-            if (imgCrepe2.Visibility == Visibility.Visible)
-            {
-                imgCrepe2.Source = new BitmapImage(new Uri("/Images/crepes/crepe_sucre.png", UriKind.Relative));
-            }
-            else if (tempsRestantPreparation <= 0 && imgCrepe1.Visibility == Visibility.Visible)
-            {
-                imgCrepe1.Source = new BitmapImage(new Uri("/Images/crepes/crepe_sucre.png", UriKind.Relative));
-            }
+            GarnirCrepe("/Images/crepes/crepe_sucre.png");
         }
     }
 }
