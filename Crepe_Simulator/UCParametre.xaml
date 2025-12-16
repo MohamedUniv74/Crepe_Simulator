@@ -10,7 +10,7 @@
         <Grid Width="800" Height="450">
             <!-- Titre -->
             <TextBlock Text="Paramètre"
-                       FontSize="80"
+                       FontSize="82"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Top" Margin="0,20,0,0" FontFamily="Monotype Corsiva"/>
 
