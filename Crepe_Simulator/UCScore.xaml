@@ -31,7 +31,7 @@
                            FontSize="32" FontWeight="Bold"
                            Foreground="#FF2C3E50"
                            TextAlignment="Center"
-                           VerticalAlignment="Center"/>
+                           VerticalAlignment="Center" FontFamily="Monotype Corsiva"/>
 
                 <!-- Icône trophée -->
                 <Viewbox Canvas.Left="350" Canvas.Top="145" Width="100" Height="100">
@@ -90,48 +90,52 @@
                            VerticalAlignment="Center"/>
 
                 <!-- Bouton Rejouer -->
-                <Button x:Name="bouton_rejouer" Content="🔄  REJOUER" 
-                        Canvas.Left="250" Canvas.Top="385"
-                        Width="140" Height="45" 
-                        FontSize="16" FontWeight="Bold" 
-                        Foreground="White"
-                        Background="#FF27C93F">
+                <Button x:Name="bouton_rejouer" Content="REJOUER"
+        Canvas.Left="250" Canvas.Top="385"
+        Width="140" Height="45"
+        FontSize="16" FontWeight="Bold"
+        Background="#FFFFB105"
+        Foreground="black">
+
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Border Background="{TemplateBinding Background}" 
-                                    BorderBrush="#FF1E8E2E" 
-                                    BorderThickness="3" 
-                                    CornerRadius="12">
-                                <Border.Effect>
-                                    <DropShadowEffect Color="Black" BlurRadius="8" ShadowDepth="3" Opacity="0.6"/>
-                                </Border.Effect>
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Border Background="{TemplateBinding Background}"
+                    BorderBrush="Black"
+                    BorderThickness="3"
+                    CornerRadius="12">
+                                <ContentPresenter
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>
                     </Button.Template>
+
                 </Button>
 
+
                 <!-- Bouton Menu -->
-                <Button x:Name="bouton_menu" Content="🏠  ACCUEIL" 
-                        Canvas.Left="410" Canvas.Top="385"
-                        Width="140" Height="45" 
-                        FontSize="16" FontWeight="Bold" 
-                        Foreground="White"
-                        Background="#FF3498DB">
+                <Button x:Name="bouton_menu" Content="ACCUEIL"
+        Canvas.Left="410" Canvas.Top="385"
+        Width="140" Height="45"
+        FontSize="16" FontWeight="Bold"
+        Foreground="Black"
+        Background="#FFFFB105">
+
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Border Background="{TemplateBinding Background}" 
-                                    BorderBrush="#FF2874A6" 
-                                    BorderThickness="3" 
-                                    CornerRadius="12">
-                                <Border.Effect>
-                                    <DropShadowEffect Color="Black" BlurRadius="8" ShadowDepth="3" Opacity="0.6"/>
-                                </Border.Effect>
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Border Background="{TemplateBinding Background}"
+                    BorderBrush="Black"
+                    BorderThickness="3"
+                    CornerRadius="20">
+                                <ContentPresenter
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>
                     </Button.Template>
+
                 </Button>
+
 
             </Canvas>
         </Viewbox>

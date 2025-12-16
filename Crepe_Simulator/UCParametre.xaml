@@ -10,42 +10,126 @@
         <Grid Width="800" Height="450">
             <!-- Titre -->
             <TextBlock Text="Paramètre"
-                       FontSize="60" FontWeight="Bold"
+                       FontSize="80"
                        HorizontalAlignment="Center"
-                       VerticalAlignment="Top"
-                       Margin="0,20,0,0"/>
+                       VerticalAlignment="Top" Margin="0,20,0,0" FontFamily="Monotype Corsiva"/>
+
+
             <!-- Bouton Volume -->
-            <Button x:Name="Bouton_volume" Content="Volume"
-                    FontWeight="Bold" Background="PeachPuff"
-                    Width="280" Height="60" FontSize="24"
+            <Button x:Name="Bouton_volume" Content="VOLUME"
+        Width="280" Height="60"
+        FontSize="24" FontWeight="Bold"
+        Background="#FFFFB105"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Top"
+        Margin="0,110,0,0"
+        Click="Bouton_volume_Click">
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                    BorderBrush="Black"
+                    BorderThickness="3"
+                    CornerRadius="20">
+                            <ContentPresenter
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Top"
-                    Margin="0,110,0,0"
-                    Click="Bouton_volume_Click"/>
-            <!-- Bouton Temps -->
-            <Button Content="  Temps "
-                    FontWeight="Bold" Background="PeachPuff"
-                    Width="280" Height="60" FontSize="24"
+                    VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+
+            </Button>
+
+
+
+
+
+
+
+
+
+            <Button Content="TEMPS"
+        Width="280" Height="60"
+        FontSize="24" FontWeight="Bold"
+        Background="#FFFFB105"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Top"
+        Margin="0,185,0,0"
+        Click="Button_Click">
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                    BorderBrush="Black"
+                    BorderThickness="3"
+                    CornerRadius="20">
+                            <ContentPresenter
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Top"
-                    Margin="0,185,0,0"
-                    Click="Button_Click"/>
+                    VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+
+                </Button.Template>
+            </Button>
+
+
+
+
+
             <!-- Bouton Fullscreen -->
-            <Button x:Name="Bouton_fullscreen" Content="Fullscreen"
-                    FontWeight="Bold" Background="PeachPuff"
-                    Width="280" Height="60" FontSize="24"
+            <Button x:Name="Bouton_fullscreen" Content="FULLSCREEN"
+        Width="280" Height="60"
+        FontSize="24" FontWeight="Bold"
+        Background="#FFFFB105"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Top"
+        Margin="0,260,0,0"
+        Click="Bouton_fullscreen_Click">
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                    BorderBrush="Black"
+                    BorderThickness="3"
+                    CornerRadius="20">
+                            <ContentPresenter
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Top"
-                    Margin="0,260,0,0"
-                    Click="Bouton_fullscreen_Click"/>
+                    VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+
+            </Button>
+
+
+
+
+
             <!-- Bouton Retour -->
-            <Button x:Name="bouton_retour_parametre"
-                    Content="Retour" Background="Red"
-                    Width="280" Height="60" FontSize="24"
+            <Button x:Name="bouton_retour_parametre" Content="RETOUR"
+        Width="280" Height="60"
+        FontSize="24" FontWeight="Bold"
+        Background="Red"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Top"
+        Margin="0,335,0,0"
+        Click="but_retour_parametre">
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                    BorderBrush="Black"
+                    BorderThickness="3"
+                    CornerRadius="20">
+                            <ContentPresenter
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Top"
-                    Margin="0,335,0,0"
-                    Click="but_retour_parametre"/>
+                    VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+
+            </Button>
+
         </Grid>
     </Viewbox>
 </UserControl>

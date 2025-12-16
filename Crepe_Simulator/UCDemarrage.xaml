@@ -75,8 +75,8 @@
 
                 <Label Content="Creperie Simulator" 
                        Canvas.Left="514" Canvas.Top="154"
-                       Height="146" Width="931" FontSize="100"
-                       Foreground="Black" FontWeight="Bold" RenderTransformOrigin="0.5,0.5">
+                       Height="146" Width="931" FontSize="120"
+                       Foreground="Black" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" FontFamily="Monotype Corsiva">
                     <Label.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
