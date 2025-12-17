@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Crepe_Simulator.MainWindow">
+    <Position X="1" Y="4.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQABAAAAAAAABAAAAAAQBAAAAAACAAAAAAQA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Crepe_Simulator.UCDemarrage">
+    <Position X="8.5" Y="12.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAgCAAAAAAAAAAAAgAABAAAAAACAAAQAAQA=</HashCode>
+      <FileName>UCDemarrage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Crepe_Simulator.UCJeu">
+    <Position X="7.5" Y="1.25" Width="4.25" />
+    <NestedTypes>
+      <Class Name="Crepe_Simulator.UCJeu.ClientSpawn" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>UCJeu.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>MAQEgABBIBhEAKhIAgUAAgCAACEAAAAKAgQJAABgAgE=</HashCode>
+      <FileName>UCJeu.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Crepe_Simulator.UCParametre">
+    <Position X="0.5" Y="2.25" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAEAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>UCParametre.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Crepe_Simulator.UCReglesJeu">
+    <Position X="1.25" Y="0.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>UCReglesJeu.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Crepe_Simulator.UCScore">
+    <Position X="0.75" Y="8" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAEAAAAAAAAAAAAAAAAAAAkBAAAAA=</HashCode>
+      <FileName>UCScore.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Crepe_Simulator.UCTemps">
+    <Position X="0.5" Y="12.25" Width="6" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAQAAAAAAAAAAAAAAABAAAAIgAAAAAAAAAAA=</HashCode>
+      <FileName>UCTemps.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
