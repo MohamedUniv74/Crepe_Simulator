@@ -567,7 +567,7 @@ namespace Crepe_Simulator
                     }
                 }
 
-                // Si une crêpe a été vendue, augmenter le score
+                // Si une crêpe a été vendue augmenter le score
                 if (crêpeTrouvée)
                 {
                     // Jouer le son de vente
