@@ -16,29 +16,6 @@
 
 
             <!-- Bouton Volume -->
-            <Button x:Name="Bouton_volume" Content="VOLUME"
-        Width="280" Height="60"
-        FontSize="24" FontWeight="Bold"
-        Background="#FFFFB105"
-        HorizontalAlignment="Center"
-        VerticalAlignment="Top"
-        Margin="0,110,0,0"
-        Click="Bouton_volume_Click">
-
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}"
-                    BorderBrush="Black"
-                    BorderThickness="3"
-                    CornerRadius="20">
-                            <ContentPresenter
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-
-            </Button>
 
 
 
@@ -52,9 +29,9 @@
         Width="280" Height="60"
         FontSize="24" FontWeight="Bold"
         Background="#FFFFB105"
-        HorizontalAlignment="Center"
+        HorizontalAlignment="Left"
         VerticalAlignment="Top"
-        Margin="0,185,0,0"
+        Margin="264,165,0,0"
         Click="Button_Click">
 
                 <Button.Template>
@@ -81,9 +58,9 @@
         Width="280" Height="60"
         FontSize="24" FontWeight="Bold"
         Background="#FFFFB105"
-        HorizontalAlignment="Center"
+        HorizontalAlignment="Left"
         VerticalAlignment="Top"
-        Margin="0,260,0,0"
+        Margin="264,245,0,0"
         Click="Bouton_fullscreen_Click">
 
                 <Button.Template>
@@ -110,9 +87,9 @@
         Width="280" Height="60"
         FontSize="24" FontWeight="Bold"
         Background="Red"
-        HorizontalAlignment="Center"
+        HorizontalAlignment="Left"
         VerticalAlignment="Top"
-        Margin="0,335,0,0"
+        Margin="264,322,0,0"
         Click="but_retour_parametre">
 
                 <Button.Template>
