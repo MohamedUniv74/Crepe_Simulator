@@ -1,18 +1,18 @@
-﻿using System; // Importation de l'espace de noms System pour les types de base
-using System.Collections.Generic; // Importation pour les collections génériques comme List<T>
-using System.Diagnostics.Eventing.Reader; // Importation pour la lecture des événements de diagnostic
-using System.Linq; // Importation pour LINQ (Language Integrated Query)
-using System.Media; // Importation pour la lecture de sons (SoundPlayer)
-using System.Numerics; // Importation pour les types numériques avancés
-using System.Threading.Tasks; // Importation pour la programmation asynchrone avec Task
-using System.Windows; // Importation pour les types de base de WPF
-using System.Windows.Controls; // Importation pour les contrôles WPF (Button, Label, etc.)
-using System.Windows.Media; // Importation pour les médias WPF (couleurs, brushes)
-using System.Windows.Media.Imaging; // Importation pour la gestion des images
-using System.Windows.Shapes; // Importation pour les formes géométriques WPF
-using System.Windows.Threading; // Importation pour le timer et dispatcher de WPF
+﻿using System; 
+using System.Collections.Generic; 
+using System.Diagnostics.Eventing.Reader; 
+using System.Linq; 
+using System.Media; 
+using System.Numerics; 
+using System.Threading.Tasks; 
+using System.Windows;
+using System.Windows.Controls; 
+using System.Windows.Media; 
+using System.Windows.Media.Imaging; 
+using System.Windows.Shapes; 
+using System.Windows.Threading; 
 
-namespace Crepe_Simulator // Déclaration de l'espace de noms du projet
+namespace Crepe_Simulator 
 {
     public partial class UCJeu : UserControl // Déclaration de la classe UCJeu qui hérite de UserControl
     {
